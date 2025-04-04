@@ -1,14 +1,9 @@
 
 
 const GameBoard = (() => {
-  // my private variables 
   const box = 9;
   const arr = [];
 
-  //push things to the array
-
-
-  //make the array items show in the html 
   function makeGrid (){
     const body = document.querySelector ('body');
     const container = document.createElement('div');
@@ -19,7 +14,7 @@ const GameBoard = (() => {
         arr.push (i);
         container.appendChild(newDiv);
       } 
-      console.log(arr)
+      //console.log(arr)
   };
   return [
     arr,
