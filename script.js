@@ -1,173 +1,108 @@
-//creates the ttt cells
-
+//Simplifying the TTT 
 function GameBoard (){
-    const cell = 9;
-    const arr = [];
+  const cell = 9; //number of ttt box
+  const board = []; //contains the looped arrays
 
-    for (let i = 0; i < cell; i++) {
-      arr.push(i);
-    }
+  //push Cell value to the gameboard
+  for (let i = 0; i < cell; i++) {
+    board.push(Cell().value);
+  }
+  console.log(board)
 
-    const getBoard = () => arr;
-    console.log(arr)
-    return {getBoard} 
+  const getBoard = () => board;
+
+  const printBoard = () => {
+    const text = 'hello';
+    console.log(text)
+  }
+  printBoard();
+
+  
+  const dropToken = () => {
+    const board = getBoard();
+    const availableCell = board.filter((board) => board === 0);
+    console.log(availableCell)
+  }
+  dropToken();
+
+
+  return {getBoard, printBoard}
 }
+GameBoard();
 
-function createPlayer(
-  playerOneName = "Player One",
-  playerTwoName = "Player Two"
-) {
+//push cell to the gameboard
 
-  const players = [
-    {
-      name: playerOneName,
-      token: 1
-    },
-    {
-      name: playerTwoName,
-      token: 2
-    }
-  ];
+function Cell (){
+  value = 0;
+  player = 1
 
-  console.log(players)
+
+  const addToken = (player) => {
+    value = player;
+    console.log(value) //the clg doesnt log??? why
+  };
+
+
   return {
-    players
+    value,
+    addToken
   }
 }
-createPlayer()
+
+
+//creates the ttt cells
 
 
 
+// let player = 1;
 
+// function Cell (){
+//   let value = 0; //sets initial value of the cell to 0
 
-// function createPlayer (name, mark, arr = []){
-//   makeGrid();
-//   console.log(arr = [])
+//   const addToken = (player) => {
+//     value = player;
+//   }
+//   const getValue = () => value;
 
 //   return {
-//     name,
-//     mark,
-//     arr,
-//     makeMark: function (){
-//       console.log (mark);
-//     }
+//     addToken, 
+//     getValue
 //   }
-// };
+// }
+// Cell ()
 
-// createPlayer();
-
-//goal is to leave mark to the div??? 
-// function createPlayer (name, mark, arr = []){
-
-//   //creates the player, assign a mark,  leave a mark to the div
-//   return {
-//     name: name,
-//     mark: mark,
-//     index (){
-//       arr.addEventListener("click", myFunction);
-//     }
-//     }
-//   }
+//make function that will pseudo occupy a cell?
 
 
-// const createPlayer = (name, gameArr = []) => { // 👈 pass gameArr as paramater so the function can work with.
-//   let properties = {
-//       name,
-//       copyArr(){
-//         let newArr = gameArr;
-//         console.log(newArr)
-//       }
-//   }
 
-//   return properties; // 👈 return properties. not player.
+
+
+// function players(){
+//   //this one creates players who will play the game
 // }
 
-// const game = (() => {
-//   const gameArr = [1,2,3,4,5]
-
-//   let player = createPlayer("Fred", gameArr)
-
-//   let testObj = {
-//     name: "Bob",
-//     copyArr(){
-//       let newArr = gameArr;
-//       console.log(newArr);
-//     }
-//   }
-
-//   testObj.copyArr();
-//   player.copyArr();
-
-//   return 
-// })()
 
 
+// function playRound (){
+//   //this function accepts the player's mark and the cell in which it wants to mark
+//   //calls function cell afterwards
+// }
 
 
+// function createPlayer(
+//   playerOneName = "Player One",
+//   playerTwoName = "Player Two"
+// ) {
 
-
-
-// function createPlayer (name, mark){
-//   return {
-//     name,
-//     mark,
-//     // makeMark: function (){
-//     //   console.log (mark);
-//     // }
-//   }
-// };
-
-
-
-// const human = createPlayer('human', 'X')
-// console.log(human.mark)
-
-//this function to make the player leave a mark
-
-
-
-
-
-// function elementFactory(type, text, color) {
-//   const el = document.createElement(type)
-//   el.innerText = text
-//   el.style.color = color
-//   document.body.append(el)
-
-//   return {
-//     el,
-//     setText(newText) {
-//       el.innerText = newText
+//   const players = [
+//     {
+//       name: playerOneName,
+//       token: 1
 //     },
-//     setColor(newColor) {
-//       el.style.color = newColor
+//     {
+//       name: playerTwoName,
+//       token: 2
 //     }
-//   }
-// }
 
-// const h1 = elementFactory('h1', 'I am H1', 'blue')
-// const a = elementFactory('a', 'I am A', 'red')
-// const p = elementFactory('p', 'I am P', 'green')
-
-// h1.setText('Changed H1!')
-// a.setColor('purple')
-
-// function createUser (name) {
-//   const discordName = "@" + name;
-
-//   let reputation = 0;
-//   const getReputation = () => reputation;
-//   const giveReputation = () => reputation++;
-
-//   return { name, discordName, getReputation, giveReputation };
-// }
-
-// const josh = createUser("josh");
-// josh.giveReputation();
-// josh.giveReputation();
-
-// console.log({
-//   discordName: josh.discordName,
-//   reputation: josh.getReputation()
-// });
-
+//   return [players]
+// };
