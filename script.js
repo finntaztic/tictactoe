@@ -4,48 +4,70 @@ function GameBoard (){
   const board = []; //contains the looped arrays
 
   //push Cell value to the gameboard
+
+  //use divs to push to array so we can replace value of the cell
+
+  
   for (let i = 0; i < cell; i++) {
-    board.push(Cell().value);
+    board [i] = [];
+    board[i].push(Cell().initialValue);
   }
   console.log(board)
 
   const getBoard = () => board;
 
-  const printBoard = () => {
-    const text = 'hello';
-    console.log(text)
-  }
-  printBoard();
+  // const printBoard = () => {
+  //   const text = 'hello';
+  //   console.log(text)
+  // }
+  // printBoard();
 
   
   const dropToken = () => {
     const board = getBoard();
-    const availableCell = board.filter((board) => board === 0);
-    console.log(availableCell)
+    console.log(board)
+    
+    const index = addToken().index;
+    const token = addToken().player;
+    console.log(index)
+    console.log(board[index])
+    let test1 = 0
+    let test2 = 0
+
+
+    if ((board[index]) == 0){
+      board[index] = token
+      console.log(board)
+    } else return;
   }
+
   dropToken();
 
 
-  return {getBoard, printBoard}
+  return {getBoard, dropToken}
 }
 GameBoard();
 
 //push cell to the gameboard
 
 function Cell (){
-  value = 0;
+  initialValue = 0;
   player = 1
 
+  return {
+    initialValue,
+    addToken
+  }
+}
 
-  const addToken = (player) => {
-    value = player;
-    console.log(value) //the clg doesnt log??? why
-  };
+function addToken (){
 
+  index = 3;
+  token = [2];
 
   return {
-    value,
-    addToken
+    index,
+    token
   }
 }
 
