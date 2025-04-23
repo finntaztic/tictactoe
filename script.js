@@ -3,51 +3,100 @@ function GameBoard (){
   const cell = 9; //number of ttt box
   const board = []; //contains the looped arrays
 
-  //push Cell value to the gameboard
+  //push Cell value to the game board
   for (let i = 0; i < cell; i++) {
-    board.push(Cell().value);
+    board.push(Cell());
   }
   console.log(board)
 
   const getBoard = () => board;
 
-  const dropToken = () => {
-    const board = getBoard();
-    console.log(board)
-    
-    const index = addToken().index;
-    const token = addToken().token;
+  const dropToken = (index, player) => {
+    const availableCells = board
+      .filter((cell) => cell.getValue() === 0)
+      .map((cell) => cell);
 
-    if ((board[index]) == 0){
-      board[index] = token;
-      console.log(board)
-    } else return;
+      if (!availableCells.length) return;
+
+      board[index].addToken(player);
   }
   dropToken();
 
+  const printBoard = () => {
+    const boardWithCellValues = board.map((cell => cell.getValue())
+    );
+    
+    console.log(boardWithCellValues)
+  };
+
+  printBoard();
   return {getBoard, dropToken};
 }
 GameBoard();
 
-//push initial value of the array to the gameboard
-
+//pushes value to the gameboard
 function Cell (){
   value = 0;
-  player = 1
+
+  const addToken = (player) => {
+    value = player;
+  };
+
+  const getValue = () => value;
 
   return {
-    value
+    addToken, 
+    getValue,
+  };
   }
-}
 
-//add players token to the array
+Cell();
 
-function addToken (){
-  index = 3;
-  token = 2;
+function GameController (
+  playerOneName = 'Player 1',
+  playerTwoName = 'Player 2'
+){
 
+  const board = GameBoard();
+  //make players 
+
+  const players = [
+    {
+      name: playerOneName,
+      token: 1
+    },
+    {
+      name: playerTwoName,
+      token: 2
+    }
+  ];
+
+  let activePlayer = players [0];
+  console.log(activePlayer)
+
+  const getActivePlayer = () => activePlayer;
+
+  //goal is to change the value of one index in the gameboard
+  const playRound = (index) => {
+    console.log(`Marking ${getActivePlayer().name}'s token into index: ${index}`);
+    board.dropToken(index, getActivePlayer().token);
+  }
+  console.log(board)
   return {
-    index,
-    token
-  }
-}
+    playRound
+  };
+};
+
+const game = GameController();
+
+game.playRound(7);
+
+
+//pick up on
+
+//1. changing the value of the game board
+//2. i think the cell() value part is screwing it cos i already tried
+//manipualting values in the addtoken and its working, just that the get value is
+//undefined
+
+
