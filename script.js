@@ -1,4 +1,3 @@
-//Simplifying the TTT 
 function GameBoard (){
   const cell = 9; //number of ttt box
   const board = []; //contains the looped arrays
@@ -12,21 +11,25 @@ function GameBoard (){
   const getBoard = () => board;
 
   const dropToken = (index, player) => {
-    const availableCells = board
-      .filter((cell) => cell.getValue() === 0)
-      .map((cell) => cell);
 
-      if (!availableCells.length) return;
+    const availableCells = board.map((cell => cell.getValue()));
+    
+    // const availableCells = board
+    //   .filter((cell) => cell.getValue() === 0)
 
-      board[index].addToken(player);
+    const okayCell = availableCells;
+    console.log(okayCell[1])
+
+    //get the individual index of the okayCell to add the token
+
+    board[1].addToken(player);
   }
   dropToken();
 
   const printBoard = () => {
-    const boardWithCellValues = board.map((cell => cell.getValue())
-    );
+    const boardCell = board.map((cell => cell.getValue()));
     
-    console.log(boardWithCellValues)
+    console.log(boardCell)
   };
 
   printBoard();
@@ -43,7 +46,6 @@ function Cell (){
   };
 
   const getValue = () => value;
-
   return {
     addToken, 
     getValue,
@@ -92,11 +94,15 @@ const game = GameController();
 game.playRound(7);
 
 
-//pick up on
+function firstFunction() {
+  // do something
+  return "testing 123";
+}
 
-//1. changing the value of the game board
-//2. i think the cell() value part is screwing it cos i already tried
-//manipualting values in the addtoken and its working, just that the get value is
-//undefined
+var test = firstFunction();  // this will grab you the return value from firstFunction();
+alert(test);
 
-
+function testCase() {
+  var test = firstFunction(); 
+  alert(test);
+}
