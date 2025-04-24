@@ -22,7 +22,6 @@ function GameBoard (){
 }
 GameBoard();
 
-//pushes value to the gameboard
 function Cell (){
   value = 0;
   const addToken = (player) => {
@@ -34,7 +33,6 @@ function Cell (){
     getValue,
   };
   }
-Cell();
 
 function GameController (
   playerOneName = 'Player 1',
@@ -60,6 +58,7 @@ function GameController (
   const playRound = (index) => {
     console.log(`Marking ${getActivePlayer().name}'s token into index: ${index}`);
     board.dropToken(index, getActivePlayer().token);
+    console.log(index)
     board.printBoard();
   }
   console.log(board)
