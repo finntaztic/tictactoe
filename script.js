@@ -1,17 +1,16 @@
 function GameBoard (){
   const cell = 9; //number of ttt box
   const board = []; //contains the looped arrays
-
   //push Cell value to the game board
   for (let i = 0; i < cell; i++) {
     board.push(Cell());
   }
   const getBoard = () => board;
-
   const dropToken = (index, player) => {
     const availableCells = board
       .filter((cell) => cell.getValue() === 0) 
-    availableCells[index].addToken(player);
+      console.log(availableCells[7])
+      board[index].addToken(player)
   }
 
   const printBoard = () => {
@@ -30,7 +29,7 @@ function Cell (){
   const getValue = () => value;
   return {
     addToken, 
-    getValue,
+    getValue
   };
   }
 
