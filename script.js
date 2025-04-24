@@ -6,52 +6,34 @@ function GameBoard (){
   for (let i = 0; i < cell; i++) {
     board.push(Cell());
   }
-  console.log(board)
-
   const getBoard = () => board;
 
   const dropToken = (index, player) => {
-
-    const availableCells = board.map((cell => cell.getValue()));
-    
-    // const availableCells = board
-    //   .filter((cell) => cell.getValue() === 0)
-
-    const okayCell = availableCells;
-    console.log(okayCell[1])
-
-    //get the individual index of the okayCell to add the token
-
-    board[1].addToken(player);
+    const availableCells = board
+      .filter((cell) => cell.getValue() === 0) 
+    availableCells[index].addToken(player);
   }
-  dropToken();
 
   const printBoard = () => {
     const boardCell = board.map((cell => cell.getValue()));
-    
     console.log(boardCell)
   };
-
-  printBoard();
-  return {getBoard, dropToken};
+  return {getBoard, dropToken, printBoard};
 }
 GameBoard();
 
 //pushes value to the gameboard
 function Cell (){
   value = 0;
-
   const addToken = (player) => {
     value = player;
   };
-
   const getValue = () => value;
   return {
     addToken, 
     getValue,
   };
   }
-
 Cell();
 
 function GameController (
@@ -60,8 +42,6 @@ function GameController (
 ){
 
   const board = GameBoard();
-  //make players 
-
   const players = [
     {
       name: playerOneName,
@@ -75,13 +55,12 @@ function GameController (
 
   let activePlayer = players [0];
   console.log(activePlayer)
-
   const getActivePlayer = () => activePlayer;
 
-  //goal is to change the value of one index in the gameboard
   const playRound = (index) => {
     console.log(`Marking ${getActivePlayer().name}'s token into index: ${index}`);
     board.dropToken(index, getActivePlayer().token);
+    board.printBoard();
   }
   console.log(board)
   return {
@@ -90,19 +69,5 @@ function GameController (
 };
 
 const game = GameController();
-
 game.playRound(7);
 
-
-function firstFunction() {
-  // do something
-  return "testing 123";
-}
-
-var test = firstFunction();  // this will grab you the return value from firstFunction();
-alert(test);
-
-function testCase() {
-  var test = firstFunction(); 
-  alert(test);
-}
