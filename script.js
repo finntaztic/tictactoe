@@ -6,12 +6,18 @@ function GameBoard (){
     board.push(Cell());
   }
   const getBoard = () => board;
+
+
   const dropToken = (index, player) => {
-    const availableCells = board
-      .filter((cell) => cell.getValue() === 0) 
-      console.log(availableCells[7])
+    const okayCells = board
+      .filter ((board) => board.getValue() === 0)
+      .map((board) => board[index])
+      console.log(okayCells)
+      console.log(okayCells[7])
       board[index].addToken(player)
+      console.log(okayCells)
   }
+  dropToken()
 
   const printBoard = () => {
     const boardCell = board.map((cell => cell.getValue()));
@@ -23,6 +29,8 @@ GameBoard();
 
 function Cell (){
   value = 0;
+  player = 1;
+  index = 1;
   const addToken = (player) => {
     value = player;
   };
@@ -33,39 +41,38 @@ function Cell (){
   };
   }
 
-function GameController (
-  playerOneName = 'Player 1',
-  playerTwoName = 'Player 2'
-){
+// function GameController (
+//   playerOneName = 'Player 1',
+//   playerTwoName = 'Player 2'
+// ){
+//   const board = GameBoard();
+//   const players = [
+//     {
+//       name: playerOneName,
+//       token: 1
+//     },
+//     {
+//       name: playerTwoName,
+//       token: 2
+//     }
+//   ];
 
-  const board = GameBoard();
-  const players = [
-    {
-      name: playerOneName,
-      token: 1
-    },
-    {
-      name: playerTwoName,
-      token: 2
-    }
-  ];
+//   let activePlayer = players [0];
+//   console.log(activePlayer)
+//   const getActivePlayer = () => activePlayer;
 
-  let activePlayer = players [0];
-  console.log(activePlayer)
-  const getActivePlayer = () => activePlayer;
+//   const playRound = (index) => {
+//     console.log(`Marking ${getActivePlayer().name}'s token into index: ${index}`);
+//     board.dropToken(index, getActivePlayer().token);
+//     console.log(index)
+//     board.printBoard();
+//   }
+//   console.log(board)
+//   return {
+//     playRound,
+//     getActivePlayer
+//   };
+// };
 
-  const playRound = (index) => {
-    console.log(`Marking ${getActivePlayer().name}'s token into index: ${index}`);
-    board.dropToken(index, getActivePlayer().token);
-    console.log(index)
-    board.printBoard();
-  }
-  console.log(board)
-  return {
-    playRound
-  };
-};
-
-const game = GameController();
-game.playRound(7);
-
+// const game = GameController();
+// game.playRound(7);
