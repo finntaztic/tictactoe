@@ -7,23 +7,22 @@ function GameBoard (){
   }
   const getBoard = () => board;
 
-
-  const dropToken = (index, player) => {
-    const okayCells = board
-      .filter ((board) => board.getValue() === 0)
-      .map((board) => board[index])
-      console.log(okayCells)
-      console.log(okayCells[7])
-      board[index].addToken(player)
-      console.log(okayCells)
-  }
-  dropToken()
+  // const dropToken = (index, player) => {
+  //   const okayCells = board
+  //     .filter ((board) => board.getValue() === 0)
+  //     .map((board) => board[index])
+  //     console.log(okayCells)
+  //     console.log(okayCells[7])
+  //     board[index].addToken(player)
+  //     console.log(okayCells)
+  // }
+  // dropToken()
 
   const printBoard = () => {
     const boardCell = board.map((cell => cell.getValue()));
     console.log(boardCell)
   };
-  return {getBoard, dropToken, printBoard};
+  return {getBoard, printBoard};
 }
 GameBoard();
 
@@ -33,13 +32,17 @@ function Cell (){
   index = 1;
   const addToken = (player) => {
     value = player;
+    console.log(player);
   };
+
   const getValue = () => value;
   return {
     addToken, 
     getValue
   };
   }
+
+  Cell()
 
 // function GameController (
 //   playerOneName = 'Player 1',
