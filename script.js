@@ -7,8 +7,8 @@ function GameBoard (){
   }
   const getBoard = () => board;
 
-  // addToken
-  // console.log(addToken)
+  addToken
+  console.log(addToken) //undefined
 
   const dropToken = (index, player) => {
     const okayCells = board
@@ -35,7 +35,6 @@ function Cell (){
   const addToken = (player) => {
     value = player;
   };
-
   const getValue = () => value;
   return {
     addToken, 
