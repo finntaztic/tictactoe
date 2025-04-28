@@ -28,7 +28,7 @@ function GameBoard (){
 GameBoard();
 
 function Cell (){
-  value = '';
+  let value = 0;
   const addToken = (player) => {
     value = player;
   };
