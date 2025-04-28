@@ -10,12 +10,13 @@ function GameBoard (){
     const okayCells = board
       .filter ((board) => board.getValue() === 0)
       .map((board) => board[index]) 
+    const notOkayCells = !okayCells
 
-      if (!okayCells.length){
-        return (console.log("invalid turn"));
-      } else {
-        board[index].addToken(player)
-      }
+      if (notOkayCells){
+        return;
+      } else board[index].addToken(player)
+
+      console.log(okayCells)
   }
 
   const printBoard = () => {
@@ -89,5 +90,3 @@ game.playRound(8);
 game.playRound(1);
 game.playRound(0);
 game.playRound(0);
-
-
