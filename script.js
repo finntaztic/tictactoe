@@ -6,16 +6,15 @@ function GameBoard (){
   }
   const getBoard = () => board;
 
+
   const dropToken = (index, player) => {
     const okayCells = board
-      .filter ((board) => board.getValue() === 0)
-      .map((board) => board[index]) 
-    const notOkayCells = !okayCells
+      .filter ((cell) => cell.getValue() === 0)
+    const notOkayCells = !okayCells;
 
       if (notOkayCells){
         return;
       } else board[index].addToken(player)
-
       console.log(okayCells)
   }
 
@@ -38,7 +37,6 @@ function Cell (){
     getValue,
   };
   }
-  Cell();
 
 function GameController (
   playerOneName = 'Player 1',
@@ -90,3 +88,4 @@ game.playRound(8);
 game.playRound(1);
 game.playRound(0);
 game.playRound(0);
+
