@@ -10,11 +10,18 @@ function GameBoard (){
       board[index].addToken(player)
     } else return;
   }
+  const checkWinner = () => {
+    console.log(board[0].getValue())
+    if (board[0].getValue() === 1 && board[3].getValue() === 1 && board[6].getValue() === 1){
+      console.log("Player 1 wins this round")
+    } else console.log('no');
+  }
+  checkWinner()
   const printBoard = () => {
     const boardCell = board.map((cell => cell.getValue()));
     console.log(boardCell)
   };
-  return {getBoard, dropToken, printBoard};
+  return {getBoard, dropToken, printBoard, checkWinner};
 }
 GameBoard();
 
@@ -55,34 +62,17 @@ function GameController (
     console.log(`${getActivePlayer().name}'s turn.`)
   };
 
-  const checkWinner = () => {
-    if (board[0] == 1 && board[3] == 1){
-      console.log('Hooray')
-    } else {
-      console.log('no hooray')
-    }
-  }
   const playRound = (index) => {
-
     console.log(`Marking ${getActivePlayer().name}'s token into index: ${index}`);
     board.dropToken(index, getActivePlayer().token);
 
-    //checking who wins
-    // if (players[0].index == 0){
-    //   console.log("check")
-    // } else return;
-
-    // console.log(board[0].getValue())
-    // if (board[0].getValue() === 1 && board[3].getValue() === 1 && board[6].getValue() === 1){
-    //   console.log("Player 1 wins the round")
-    // } else return;
-    console.log(board[0])
-
     switchPlayerTurn();
     printNewRound();
-    checkWinner();
+    board.checkWinner();
+
   };
     printNewRound();
+
   return {
     playRound,
     getActivePlayer
@@ -90,13 +80,12 @@ function GameController (
 };
 
 const game = GameController();
+
 game.playRound(0);
 game.playRound(0);
 game.playRound(3);
-// game.playRound(0);
-// game.playRound(6);
-// game.playRound(0);
-
+game.playRound(0);
+game.playRound(6);
 
 
 
