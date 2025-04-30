@@ -5,19 +5,11 @@ function GameBoard (){
     board.push(Cell());
   }
   const getBoard = () => board;
-
-
   const dropToken = (index, player) => {
-    const okayCells = board
-      .filter ((cell) => cell.getValue() === 0)
-    const notOkayCells = !okayCells;
-
-      if (notOkayCells){
-        return;
-      } else board[index].addToken(player)
-      console.log(okayCells)
+    if (board[index].getValue() === 0){
+      board[index].addToken(player)
+    } else return;
   }
-
   const printBoard = () => {
     const boardCell = board.map((cell => cell.getValue()));
     console.log(boardCell)
@@ -34,7 +26,7 @@ function Cell (){
   const getValue = () => value;
   return {
     addToken, 
-    getValue,
+    getValue
   };
   }
 
@@ -53,29 +45,44 @@ function GameController (
       token: 2
     }
   ];
-
   let activePlayer = players [0];
-
   const switchPlayerTurn = () => {
     activePlayer = activePlayer === players [0] ? players [1] : players [0]
   };
-
   const getActivePlayer = () => activePlayer;
-
   const printNewRound = () => {
     board.printBoard();
     console.log(`${getActivePlayer().name}'s turn.`)
   };
 
+  const checkWinner = () => {
+    if (board[0] == 1 && board[3] == 1){
+      console.log('Hooray')
+    } else {
+      console.log('no hooray')
+    }
+  }
   const playRound = (index) => {
+
     console.log(`Marking ${getActivePlayer().name}'s token into index: ${index}`);
     board.dropToken(index, getActivePlayer().token);
 
+    //checking who wins
+    // if (players[0].index == 0){
+    //   console.log("check")
+    // } else return;
+
+    // console.log(board[0].getValue())
+    // if (board[0].getValue() === 1 && board[3].getValue() === 1 && board[6].getValue() === 1){
+    //   console.log("Player 1 wins the round")
+    // } else return;
+    console.log(board[0])
+
     switchPlayerTurn();
     printNewRound();
+    checkWinner();
   };
     printNewRound();
-
   return {
     playRound,
     getActivePlayer
@@ -83,9 +90,13 @@ function GameController (
 };
 
 const game = GameController();
-game.playRound(7);
-game.playRound(8);
-game.playRound(1);
 game.playRound(0);
 game.playRound(0);
+game.playRound(3);
+// game.playRound(0);
+// game.playRound(6);
+// game.playRound(0);
+
+
+
 
