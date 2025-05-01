@@ -35,14 +35,29 @@ function GameBoard (){
       console.log("It's a tie")
     } else return;
   }
-  checkWinner()
   const printBoard = () => {
     const boardCell = board.map((cell => cell.getValue()));
     console.log(boardCell)
   };
-  return {getBoard, dropToken, printBoard, checkWinner};
+
+  const display = () => {
+    const body = document.querySelector('body');
+    const container = document.createElement('div');
+    container.textContent = 'hi';
+    body.appendChild(container);
+
+    console.log(board)
+  }
+  display()
+
+  return {
+    getBoard, 
+    dropToken, 
+    printBoard, 
+    checkWinner, 
+    display
+  };
 }
-GameBoard();
 
 function Cell (){
   let value = 0;
@@ -101,23 +116,11 @@ function GameController (
 const game = GameController();
 
 game.playRound(0);//
-game.playRound(1);
-game.playRound(2);//
-game.playRound(3);
-game.playRound(5);//
-game.playRound(4);
-game.playRound(6);//
-game.playRound(8);
-game.playRound(7);//
-
-
-//create object that will handle the display/DOM logic
-
-
-const boxes = {};
-
-function BoxCells (){
-  const body = document.getElementById('body');
-  
-}
-
+// game.playRound(1);
+// game.playRound(2);//
+// game.playRound(3);
+// game.playRound(5);//
+// game.playRound(4);
+// game.playRound(6);//
+// game.playRound(8);
+// game.playRound(7);//
