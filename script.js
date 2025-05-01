@@ -33,7 +33,7 @@ function GameBoard (){
       && board[6].getValue() !== 0 && board[7].getValue() !== 0 && board[8].getValue() !== 0
     ){
       console.log("It's a tie")
-    } else console.log("no")
+    } else return;
   }
   checkWinner()
   const printBoard = () => {
