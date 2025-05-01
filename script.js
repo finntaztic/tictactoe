@@ -111,7 +111,13 @@ game.playRound(8);
 game.playRound(7);//
 
 
+//create object that will handle the display/DOM logic
 
 
+const boxes = {};
 
+function BoxCells (){
+  const body = document.getElementById('body');
+  
+}
 
