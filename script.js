@@ -40,19 +40,17 @@ function GameBoard (){
     console.log(boardCell)
   };
 
+  const body = document.querySelector('body');
+  const container = document.createElement('div');
+  body.appendChild(container);
+  const div = document.createElement('div');
+  container.appendChild(div);
+
   const display = () => {
-    const body = document.querySelector('body');
-    const container = document.createElement('div');
-    body.appendChild(container)
-
-
-    getBoard().forEach (item => {
-      let div = document.createElement('div');
-      // div.textContent(item.getValue())
-      container.appendChild(div);
-      // div.appendChild(item);
+    getBoard().forEach(item => {
+      let textNode = document.createTextNode(item.getValue())
+      div.appendChild(textNode);
     })
-    console.log(getBoard())
   }
 
   return {
@@ -101,7 +99,9 @@ function GameController (
     console.log(`${getActivePlayer().name}'s turn.`)
   };
 
+  
   const playRound = (index) => {
+
     console.log(`Marking ${getActivePlayer().name}'s token into index: ${index}`);
     board.dropToken(index, getActivePlayer().token);
 
@@ -109,9 +109,9 @@ function GameController (
     printNewRound();
     board.checkWinner();
     board.display();
-
   };
     printNewRound();
+
 
   return {
     playRound,
@@ -122,11 +122,6 @@ function GameController (
 const game = GameController();
 
 game.playRound(0);//
-// game.playRound(1);
-// game.playRound(2);//
-// game.playRound(3);
-// game.playRound(5);//
-// game.playRound(4);
-// game.playRound(6);//
-// game.playRound(8);
-// game.playRound(7);//
+game.playRound(1);//
+
+
