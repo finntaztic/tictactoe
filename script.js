@@ -39,26 +39,30 @@ function GameBoard (){
     const boardCell = board.map((cell => cell.getValue()));
     console.log(boardCell)
   };
-
+  
   const body = document.querySelector('body');
   const container = document.createElement('div');
   body.appendChild(container);
   const div = document.createElement('div');
   container.appendChild(div);
-
   const display = () => {
     getBoard().forEach(item => {
-      let textNode = document.createTextNode(item.getValue())
-      div.appendChild(textNode);
+        let textNode = document.createTextNode(item.getValue())
+        div.appendChild(textNode);
     })
   }
 
+  const refreshDisplay = () => {
+    div.remove();
+    board.display();
+  }
   return {
     getBoard, 
     dropToken, 
     printBoard, 
     checkWinner, 
-    display
+    display,
+    refreshDisplay
   };
 }
 
@@ -92,6 +96,7 @@ function GameController (
   let activePlayer = players [0];
   const switchPlayerTurn = () => {
     activePlayer = activePlayer === players [0] ? players [1] : players [0]
+
   };
   const getActivePlayer = () => activePlayer;
   const printNewRound = () => {
@@ -101,7 +106,6 @@ function GameController (
 
   
   const playRound = (index) => {
-
     console.log(`Marking ${getActivePlayer().name}'s token into index: ${index}`);
     board.dropToken(index, getActivePlayer().token);
 
@@ -109,19 +113,23 @@ function GameController (
     printNewRound();
     board.checkWinner();
     board.display();
+    refreshDisplay();
+    board.display();
   };
     printNewRound();
-
 
   return {
     playRound,
     getActivePlayer
   };
 };
-
 const game = GameController();
 
 game.playRound(0);//
 game.playRound(1);//
+game.playRound(2);//
+game.playRound(3);//
+
+
 
 
