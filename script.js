@@ -43,12 +43,17 @@ function GameBoard (){
   const display = () => {
     const body = document.querySelector('body');
     const container = document.createElement('div');
-    container.textContent = 'hi';
-    body.appendChild(container);
+    body.appendChild(container)
 
-    console.log(board)
+
+    getBoard().forEach (item => {
+      let div = document.createElement('div');
+      // div.textContent(item.getValue())
+      container.appendChild(div);
+      // div.appendChild(item);
+    })
+    console.log(getBoard())
   }
-  display()
 
   return {
     getBoard, 
@@ -103,6 +108,7 @@ function GameController (
     switchPlayerTurn();
     printNewRound();
     board.checkWinner();
+    board.display();
 
   };
     printNewRound();
