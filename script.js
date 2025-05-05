@@ -43,26 +43,29 @@ function GameBoard (){
   const body = document.querySelector('body');
   const container = document.createElement('div');
   body.appendChild(container);
-  const div = document.createElement('div');
-  container.appendChild(div);
+
   const display = () => {
     getBoard().forEach(item => {
-        let textNode = document.createTextNode(item.getValue())
-        div.appendChild(textNode);
+
+      const div = document.createElement('div');
+      container.appendChild(div);
+      let textNode = document.createTextNode(item.getValue())
+      div.appendChild(textNode);
     })
   }
 
-  const refreshDisplay = () => {
-    div.remove();
-    board.display();
-  }
+  // const refreshDisplay = () => {
+  //   div.remove();
+  //   console.log(div)
+  //   // board.display();
+  // }
   return {
     getBoard, 
     dropToken, 
     printBoard, 
     checkWinner, 
     display,
-    refreshDisplay
+    // refreshDisplay
   };
 }
 
@@ -113,8 +116,6 @@ function GameController (
     printNewRound();
     board.checkWinner();
     board.display();
-    refreshDisplay();
-    board.display();
   };
     printNewRound();
 
@@ -127,8 +128,7 @@ const game = GameController();
 
 game.playRound(0);//
 game.playRound(1);//
-game.playRound(2);//
-game.playRound(3);//
+
 
 
 
