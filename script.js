@@ -18,14 +18,12 @@ function GameBoard (){
       || (board[0].getValue() === 1 && board[4].getValue() === 1 && board[8].getValue() === 1)
       || (board[2].getValue() === 1 && board[4].getValue() === 1 && board[6].getValue() === 1)){
       console.log("Player 1 wins this round 🎉")
-      //stop the match
     } else if ((board[0].getValue() === 2 && board[3].getValue() === 2 && board[6].getValue() === 2)
       || (board[1].getValue() === 2 && board[4].getValue() === 2 && board[7].getValue() === 2)
       || (board[2].getValue() === 2 && board[5].getValue() === 2 && board[8].getValue() === 2)
       || (board[0].getValue() === 2 && board[4].getValue() === 2 && board[8].getValue() === 2)
       || (board[2].getValue() === 2 && board[4].getValue() === 2 && board[6].getValue() === 2)){
       console.log("Player 2 wins this round 🎉🎉")
-      //stop the match
     } 
     else if (
       board[0].getValue() !== 0 && board[1].getValue() !== 0 && board[2].getValue() !== 0
@@ -53,15 +51,7 @@ function GameBoard (){
       let textNode = document.createTextNode(item.getValue())
       div.appendChild(textNode);
     })
-
   }
-
-  // const refreshDisplay = () => {
-  //   const div = document.querySelector('div');
-  //   console.log(div)
-  //   div.remove();
-  // }
-  // refreshDisplay();
 
   return {
     getBoard, 
@@ -69,7 +59,6 @@ function GameBoard (){
     printBoard, 
     checkWinner, 
     display
-    // refreshDisplay
   };
 }
 
@@ -90,7 +79,6 @@ function GameController (
   playerTwoName = 'Player 2'
 ){
   const board = GameBoard();
-  const body = document.querySelector('body')
   const players = [
     {
       name: playerOneName,
@@ -112,7 +100,7 @@ function GameController (
     console.log(`${getActivePlayer().name}'s turn.`)
   };
 
-  board.display();
+  board.display(); //initial display
   
   const playRound = (index) => {
     console.log(`Marking ${getActivePlayer().name}'s token into index: ${index}`);
@@ -122,8 +110,8 @@ function GameController (
     printNewRound();
     board.checkWinner();
     const container = document.getElementById('container');
-    container.remove();
-    board.display();
+    container.remove(); //removes initial display
+    board.display(); // display the updated board
   };
     printNewRound();
 
@@ -139,6 +127,8 @@ game.playRound(1);
 game.playRound(2);
 game.playRound(3);
 game.playRound(4);
+game.playRound(5);
+
 
 
 
