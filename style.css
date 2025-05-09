@@ -22,19 +22,22 @@ body {
 
 /* styling */
 #container {
-    height: 30em;
-    width: 30em;
-    display: flex;
-    text-align: center;
-    align-items: center;
     background-color: pink; 
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr;
+    border: 1px solid black;
+
 }
 
-container > div {
-    outline: 1px solid white;
+#container > div {
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    outline: 1px solid black;
+    height: 10em;
+    width: 10em;
 }
 
 

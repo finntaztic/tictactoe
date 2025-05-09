@@ -10,7 +10,7 @@ function GameBoard (){
       board[index].addToken(player)
     } else return;
   }
-  
+
   const checkWinner = () => {
     console.log(board[0].getValue())
     if ((board[0].getValue() === 1 && board[3].getValue() === 1 && board[6].getValue() === 1)
@@ -48,10 +48,20 @@ function GameBoard (){
 
     getBoard().forEach(item => {
       const div = document.createElement('div');
+      div.classList.add = 'boxes';
       container.appendChild(div);
       let textNode = document.createTextNode(item.getValue())
       div.appendChild(textNode);
     })
+
+  //getting the marker of the player
+  const playerMark = () => {
+    const boxes = document.querySelectorAll('boxes');
+      boxes.addEventListener('click', () => {
+        console.log ('box is clicked')
+      })
+  }
+  playerMark();
   }
 
   return {
@@ -59,7 +69,8 @@ function GameBoard (){
     dropToken, 
     printBoard, 
     checkWinner, 
-    display
+    display, 
+    // playerMark
   };
 }
 
@@ -129,7 +140,6 @@ game.playRound(2);
 game.playRound(3);
 game.playRound(4);
 game.playRound(5);
-
 
 
 
