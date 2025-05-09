@@ -56,8 +56,23 @@ function GameBoard (){
 
   // getting the marker of the player
   const playerMark = () => {
-    const boxes = document.querySelectorAll('.boxes');
-    console.log('boxes')
+    let boxes = document.querySelectorAll('.boxes');
+    console.log(boxes);
+
+    boxes.forEach((box) => {
+      box.addEventListener('click', () => {
+        console.log ('box is clicked')
+      })
+    })
+    // for (let i = 0; i < boxes.length; i++){
+    //   boxes.addEventListener('click', myFunction);
+
+    //   function myFunction (){
+    //     console.log ('box is clicked')
+    //   }
+    // }
+
+
       // boxes.addEventListener('click', () => {
       //   console.log ('box is clicked')
       // })
