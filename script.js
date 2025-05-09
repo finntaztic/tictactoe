@@ -48,15 +48,15 @@ function GameBoard (){
 
     getBoard().forEach(item => {
       const div = document.createElement('div');
-      div.classList.add = 'boxes';
+      // div.classList.add = 'boxes';
       container.appendChild(div);
       let textNode = document.createTextNode(item.getValue())
       div.appendChild(textNode);
     })
 
-  //getting the marker of the player
+  // getting the marker of the player
   const playerMark = () => {
-    const boxes = document.querySelectorAll('boxes');
+    const boxes = document.querySelectorAll('div');
       boxes.addEventListener('click', () => {
         console.log ('box is clicked')
       })
