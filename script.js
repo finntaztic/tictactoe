@@ -50,8 +50,13 @@ function GameBoard (){
       const div = document.createElement('div');
       div.className = 'boxes';
       container.appendChild(div);
-      let textNode = document.createTextNode(item.getValue())
-      div.appendChild(textNode);
+
+      if (item.getValue() == '1' || item.getValue() == '2'){
+        let textNode = document.createTextNode(item.getValue())
+        div.appendChild(textNode);
+      } else return;
+
+
     })
 
   // getting the marker of the player
@@ -61,21 +66,9 @@ function GameBoard (){
 
     boxes.forEach((box) => {
       box.addEventListener('click', () => {
-        console.log ('box is clicked')
+        console.log ('box is clicked');
       })
     })
-    // for (let i = 0; i < boxes.length; i++){
-    //   boxes.addEventListener('click', myFunction);
-
-    //   function myFunction (){
-    //     console.log ('box is clicked')
-    //   }
-    // }
-
-
-      // boxes.addEventListener('click', () => {
-      //   console.log ('box is clicked')
-      // })
   }
   playerMark();
   }
