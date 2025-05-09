@@ -112,6 +112,7 @@ function GameController (
     console.log(`${getActivePlayer().name}'s turn.`)
   };
 
+  board.display();
   
   const playRound = (index) => {
     console.log(`Marking ${getActivePlayer().name}'s token into index: ${index}`);
@@ -121,10 +122,8 @@ function GameController (
     printNewRound();
     board.checkWinner();
     const container = document.getElementById('container');
-    // console.log(div)
     container.remove();
     board.display();
-    // refreshDisplay();
   };
     printNewRound();
 
@@ -135,9 +134,13 @@ function GameController (
 };
 const game = GameController();
 
-game.playRound(0);//
-game.playRound(1);//
-game.playRound(2);//
+game.playRound(0);
+game.playRound(1);
+game.playRound(2);
+game.playRound(3);
+game.playRound(4);
+
+
 
 
 
