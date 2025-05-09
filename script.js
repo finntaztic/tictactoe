@@ -3,7 +3,23 @@ function GameBoard (){
   const board = []; 
   for (let i = 0; i < cell; i++){
     board.push(Cell());
+    // board.forEach((box) => {
+    //   box.addEventListener('click', () => {
+    //     console.log ('box is clicked');
+    //   })
+    // })
   }
+
+  // for(let j = 0; j < board.length; j++) {
+  //   board[i].addEventListener("click", bindClick(i));
+  // }
+
+  // function bindClick(i) {
+  // return function() {
+  //     console.log("you clicked region number " + i);
+  // };
+  // }
+
   const getBoard = () => board;
   const dropToken = (index, player) => {
     if (board[index].getValue() === 0){
@@ -60,17 +76,17 @@ function GameBoard (){
     })
 
   // getting the marker of the player
-  const playerMark = () => {
-    let boxes = document.querySelectorAll('.boxes');
-    console.log(boxes);
+  // const playerMark = () => {
+  //   let boxes = document.querySelectorAll('.boxes');
+  //   console.log(boxes);
 
-    boxes.forEach((box) => {
-      box.addEventListener('click', () => {
-        console.log ('box is clicked');
-      })
-    })
-  }
-  playerMark();
+  //   boxes.forEach((box) => {
+  //     box.addEventListener('click', () => {
+  //       console.log ('box is clicked');
+  //     })
+  //   })
+  // }
+  // playerMark();
   }
 
   return {
