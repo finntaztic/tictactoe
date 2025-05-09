@@ -10,6 +10,7 @@ function GameBoard (){
       board[index].addToken(player)
     } else return;
   }
+  
   const checkWinner = () => {
     console.log(board[0].getValue())
     if ((board[0].getValue() === 1 && board[3].getValue() === 1 && board[6].getValue() === 1)

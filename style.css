@@ -1,0 +1,40 @@
+/* Reset styles */
+* {
+    *::before,
+    *::after {
+        box-sizing: border-box;
+    }
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    line-height: 1.5;
+    
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* styling */
+#container {
+    height: 30em;
+    width: 30em;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    background-color: pink; 
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+}
+
+container > div {
+    outline: 1px solid white;
+}
+
+
