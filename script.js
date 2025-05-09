@@ -35,36 +35,40 @@ function GameBoard (){
       console.log("It's a tie")
     } else return;
   }
+
   const printBoard = () => {
     const boardCell = board.map((cell => cell.getValue()));
     console.log(boardCell)
   };
   
-  const body = document.querySelector('body');
-  const container = document.createElement('div');
-  body.appendChild(container);
-
   const display = () => {
-    getBoard().forEach(item => {
+    const body = document.querySelector('body');
+    const container = document.createElement('div');
+    container.id = 'container';
+    body.appendChild(container);
 
+    getBoard().forEach(item => {
       const div = document.createElement('div');
       container.appendChild(div);
       let textNode = document.createTextNode(item.getValue())
       div.appendChild(textNode);
     })
+
   }
 
   // const refreshDisplay = () => {
-  //   div.remove();
+  //   const div = document.querySelector('div');
   //   console.log(div)
-  //   // board.display();
+  //   div.remove();
   // }
+  // refreshDisplay();
+
   return {
     getBoard, 
     dropToken, 
     printBoard, 
     checkWinner, 
-    display,
+    display
     // refreshDisplay
   };
 }
@@ -86,6 +90,7 @@ function GameController (
   playerTwoName = 'Player 2'
 ){
   const board = GameBoard();
+  const body = document.querySelector('body')
   const players = [
     {
       name: playerOneName,
@@ -115,7 +120,11 @@ function GameController (
     switchPlayerTurn();
     printNewRound();
     board.checkWinner();
+    const container = document.getElementById('container');
+    // console.log(div)
+    container.remove();
     board.display();
+    // refreshDisplay();
   };
     printNewRound();
 
@@ -128,6 +137,9 @@ const game = GameController();
 
 game.playRound(0);//
 game.playRound(1);//
+game.playRound(2);//
+
+
 
 
 
