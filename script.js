@@ -136,7 +136,7 @@ function Cell (){
   // console.log (testBoard)
 
   const getIndex = () => {
-    
+
   }
   return {
     addToken, 
@@ -199,9 +199,3 @@ game.playRound(2);
 game.playRound(3);
 game.playRound(4);
 game.playRound(5);
-
-
-
-
-
-
