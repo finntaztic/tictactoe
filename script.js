@@ -3,22 +3,20 @@ function GameBoard (){
   const board = []; 
   for (let i = 0; i < cell; i++){
     board.push(Cell());
-    // board.forEach((box) => {
-    //   box.addEventListener('click', () => {
-    //     console.log ('box is clicked');
-    //   })
-    // })
   }
 
-  // for(let j = 0; j < board.length; j++) {
-  //   board[i].addEventListener("click", bindClick(i));
-  // }
 
-  // function bindClick(i) {
-  // return function() {
-  //     console.log("you clicked region number " + i);
-  // };
-  // }
+  // board[i].push ('hello');
+  console.log (board[i])
+  // board.forEach (element => console.log('hello'));
+  // board.forEach (item => {
+  //   item.addEventListener ('click', () => {
+  //     console.log ('hello')
+  //   })
+  // })
+
+
+
 
   const getBoard = () => board;
   const dropToken = (index, player) => {
