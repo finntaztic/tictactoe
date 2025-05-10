@@ -5,19 +5,6 @@ function GameBoard (){
     board.push(Cell());
   }
 
-
-  // board[i].push ('hello');
-  console.log (board[i])
-  // board.forEach (element => console.log('hello'));
-  // board.forEach (item => {
-  //   item.addEventListener ('click', () => {
-  //     console.log ('hello')
-  //   })
-  // })
-
-
-
-
   const getBoard = () => board;
   const dropToken = (index, player) => {
     if (board[index].getValue() === 0){
@@ -103,9 +90,19 @@ function Cell (){
     value = player;
   };
   const getValue = () => value;
+
+  const getIndex = () => {
+      board.forEach((box) => {
+      box.addEventListener('click', () => {
+      console.log ('box is clicked');
+      })
+    })
+  }
+    
   return {
     addToken, 
-    getValue
+    getValue,
+    getIndex
   };
   }
 
