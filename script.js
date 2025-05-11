@@ -7,20 +7,6 @@ function GameBoard (){
   }
   console.log (board)
 
-
-  const getIndex = () => {
-    board.forEach(myFunction)
-    function myFunction (item, index, array){
-      // array[index] = 'hello' + item;
-      let clickFunction = function (){
-        console.log ('clicked')
-      }
-      array[index].addEventListener ('click', clickFunction);
-    }
-    console.log (board)
-  }
-  getIndex();
-
   const getBoard = () => board;
 
   const dropToken = (index, player) => {
@@ -65,29 +51,27 @@ function GameBoard (){
 
     getBoard().forEach(item => {
       const div = document.createElement('div');
-      div.className = 'boxes';
+      // div.className = 'tab'+(index+1);
+      // div.classList.add ('class' + i);
+
       container.appendChild(div);
 
       if (item.getValue() == '1' || item.getValue() == '2'){
         let textNode = document.createTextNode(item.getValue())
         div.appendChild(textNode);
       } else return;
-
-
     })
 
   // getting the marker of the player
-  // const playerMark = () => {
-  //   let boxes = document.querySelectorAll('.boxes');
-  //   console.log(boxes);
-
-  //   boxes.forEach((box) => {
-  //     box.addEventListener('click', () => {
-  //       console.log ('box is clicked');
-  //     })
-  //   })
-  // }
-  // playerMark();
+  const playerMark = () => {
+    let boxes = document.querySelectorAll('.boxes');
+    boxes.forEach((box) => {
+      box.addEventListener('click', () => {
+        console.log ('box is clicked');
+      })
+    })
+  }
+  playerMark();
   }
 
   return {
@@ -95,7 +79,8 @@ function GameBoard (){
     dropToken, 
     printBoard, 
     checkWinner, 
-    display    // playerMark
+    display,
+    // playerMark    
   };
 }
 
