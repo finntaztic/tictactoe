@@ -2,41 +2,25 @@ function GameBoard (){
   const cell = 9;
   const board = []; 
 
-  // board.forEach((box) => {
-  //   box.addEventListener('click', () => {
-  //   console.log ('box is clicked');
-  //   })
-  // })
   for (let i = 0; i < cell; i++){
     board.push(Cell());
   }
   console.log (board)
 
 
-  // const getIndex = () => {
-  //   board.forEach((box) => {
-  //     box.addEventListener('click', () => {
-  //     console.log ('box is clicked');
-  //   })
-  // })
-  // }
-
-
-  for (let j = 0; j < board; j++){
-    board.push('hello');
+  const getIndex = () => {
+    board.forEach(myFunction)
+    function myFunction (item, index, array){
+      // array[index] = 'hello' + item;
+      let clickFunction = function (){
+        console.log ('clicked')
+      }
+      array[index].addEventListener ('click', clickFunction);
+    }
+    console.log (board)
   }
-  console.log (board)
+  getIndex();
 
-  // getIndex();
-  // console.log (board[0].getIndex())
-
-  // const getIndex = () => {
-  //   if (board[0].getIndex().clicked == true){
-  //     console.log ('Buttton was clicked')
-  //   }
-  // }
-
-  // getIndex();
   const getBoard = () => board;
 
   const dropToken = (index, player) => {
@@ -46,7 +30,6 @@ function GameBoard (){
   }
 
   const checkWinner = () => {
-    console.log(board[0].getValue())
     if ((board[0].getValue() === 1 && board[3].getValue() === 1 && board[6].getValue() === 1)
       || (board[1].getValue() === 1 && board[4].getValue() === 1 && board[7].getValue() === 1)
       || (board[2].getValue() === 1 && board[5].getValue() === 1 && board[8].getValue() === 1)
@@ -124,24 +107,9 @@ function Cell (){
   };
   const getValue = () => value;
 
-  // const getIndex = () => {
-  //     testBoard.forEach((box) => {
-  //     box.addEventListener('click', () => {
-  //     console.log ('box is clicked');
-  //     })
-  //   })
-  // }
-
-  
-  // console.log (testBoard)
-
-  const getIndex = () => {
-
-  }
   return {
     addToken, 
-    getValue,
-    getIndex
+    getValue
   };
   }
 
