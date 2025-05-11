@@ -5,7 +5,6 @@ function GameBoard (){
   for (let i = 0; i < cell; i++){
     board.push(Cell());
   }
-  console.log (board)
 
   const getBoard = () => board;
 
@@ -51,9 +50,7 @@ function GameBoard (){
 
     getBoard().forEach(item => {
       const div = document.createElement('div');
-      // div.className = 'tab'+(index+1);
-      // div.classList.add ('class' + i);
-
+      div.className = 'boxes';
       container.appendChild(div);
 
       if (item.getValue() == '1' || item.getValue() == '2'){
@@ -61,18 +58,21 @@ function GameBoard (){
         div.appendChild(textNode);
       } else return;
     })
+  }
+
 
   // getting the marker of the player
   const playerMark = () => {
     let boxes = document.querySelectorAll('.boxes');
-    boxes.forEach((box) => {
-      box.addEventListener('click', () => {
-        console.log ('box is clicked');
-      })
-    })
+    console.log (boxes)
+
+    // boxes.forEach((box) => {
+    //   box.addEventListener('click', () => {
+    //     console.log ('box is clicked');
+    //   })
+    // })
   }
-  playerMark();
-  }
+  playerMark ();
 
   return {
     getBoard, 
@@ -80,12 +80,11 @@ function GameBoard (){
     printBoard, 
     checkWinner, 
     display,
-    // playerMark    
+    playerMark
   };
 }
 
 function Cell (){
-  // let testBoard = ['test 1', 'test 2', 'test 3'];
   let value = 0;
   const addToken = (player) => {
     value = player;
