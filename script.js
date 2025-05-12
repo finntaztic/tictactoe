@@ -1,6 +1,6 @@
 function GameBoard (){
   const cell = 9;
-  const board = []; 
+  const board = [];
 
   for (let i = 0; i < cell; i++){
     board.push(Cell());
@@ -27,7 +27,7 @@ function GameBoard (){
       || (board[0].getValue() === 2 && board[4].getValue() === 2 && board[8].getValue() === 2)
       || (board[2].getValue() === 2 && board[4].getValue() === 2 && board[6].getValue() === 2)){
       console.log("Player 2 wins this round 🎉🎉")
-    } 
+    }
     else if (
       board[0].getValue() !== 0 && board[1].getValue() !== 0 && board[2].getValue() !== 0
       && board[3].getValue() !== 0 && board[4].getValue() !== 0 && board[5].getValue() !== 0
@@ -41,7 +41,7 @@ function GameBoard (){
     const boardCell = board.map((cell => cell.getValue()));
     console.log(boardCell)
   };
-  
+
   const display = () => {
     const body = document.querySelector('body');
     const container = document.createElement('div');
@@ -61,30 +61,29 @@ function GameBoard (){
   }
 
 
-  const playerMark = () => {
-    let boxes = document.querySelectorAll ('.boxes-1');
-    
-    boxes.forEach((box) => {
-      box.addEventListener('click', () => {
-        console.log ('box is clicked');
+  // const playerMark = () => {
+  //   let boxes = document.querySelectorAll ('.boxes-1');
 
-        if (box.className == 'boxes-1'){
-          let index = '1';
-          console.log (index)
-        } else return ('nope')
-      })
-      })
+  //   boxes.forEach((box) => {
+  //     box.addEventListener('click', () => {
+  //       console.log ('box is clicked');
 
-  } 
+  //       if (box.className == 'boxes-1'){
+  //         let index = '1';
+  //         console.log (index)
+  //       } else return ('nope')
+  //     })
+  //     })
 
-  playerMark()
+  // }
+
   return {
-    getBoard, 
-    dropToken, 
-    printBoard, 
-    checkWinner, 
+    getBoard,
+    dropToken,
+    printBoard,
+    checkWinner,
     display,
-    playerMark
+    // playerMark
   };
 }
 
@@ -96,7 +95,7 @@ function Cell (){
   const getValue = () => value;
 
   return {
-    addToken, 
+    addToken,
     getValue
   };
   }
@@ -140,7 +139,7 @@ function GameController (
     const container = document.getElementById('container');
     container.remove(); //removes initial display
     board.display(); // display the updated board
-    board.playerMark();// this perfectly works here, but this is the source of index
+    // board.playerMark();// this perfectly works here, but this is the source of index
     //and should prompt before playRound
 
   };
@@ -155,16 +154,33 @@ function GameController (
 const game = GameController();
 
 
-function getIndex (playerMark){
-  let index = '';
-  let index2 = '2';
-  return {
-    index,
-    index2
-  }
-}
-game.playRound(playerMark().index);
+// function getIndex (playerMark){
+//   let index = '';
+//   let index2 = '2';
+//   return {
+//     index,
+//     index2
+//   }
+// }
+// game.playRound(playerMark().index);
 
+function dropIndex (){
+  let boxes = document.querySelectorAll ('.boxes-1');
+
+  boxes.forEach((box) => {
+    box.addEventListener('click', () => {
+      console.log ('box is clicked');
+
+      if (box.className == 'boxes-1'){
+        let index = '1';
+        console.log (index)
+      } else return ('nope')
+    })
+    })
+}
+
+
+dropIndex()
 // function getIndex (){
 //   let index = 0;
 //   const addIndex = (player) => {
@@ -173,7 +189,7 @@ game.playRound(playerMark().index);
 //   const getValue = () => value;
 
 //   return {
-//     addToken, 
+//     addToken,
 //     getValue
 //   };
 //   }
