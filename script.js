@@ -60,30 +60,12 @@ function GameBoard (){
     })
   }
 
-
-  // const playerMark = () => {
-  //   let boxes = document.querySelectorAll ('.boxes-1');
-
-  //   boxes.forEach((box) => {
-  //     box.addEventListener('click', () => {
-  //       console.log ('box is clicked');
-
-  //       if (box.className == 'boxes-1'){
-  //         let index = '1';
-  //         console.log (index)
-  //       } else return ('nope')
-  //     })
-  //     })
-
-  // }
-
   return {
     getBoard,
     dropToken,
     printBoard,
     checkWinner,
-    display,
-    // playerMark
+    display
   };
 }
 
@@ -139,9 +121,6 @@ function GameController (
     const container = document.getElementById('container');
     container.remove(); //removes initial display
     board.display(); // display the updated board
-    // board.playerMark();// this perfectly works here, but this is the source of index
-    //and should prompt before playRound
-
   };
     printNewRound();
 
@@ -154,70 +133,20 @@ function GameController (
 const game = GameController();
 
 
-
-function dropIndex (){
+function getIndex (){
   let boxes = document.querySelectorAll ('.boxes-1');
 
-  let index = '';
-
-  const getIndex = () => {
     boxes.forEach((box) => {
       box.addEventListener('click', () => {
         console.log ('box is clicked');
-  
+        let index;
+
         if (box.className == 'boxes-1'){
           index = '1';
           console.log (index)
+          game.playRound(index)
         } else return ('nope')
       })
       })
-  }
-
-  getIndex();
-  const theIndex = () => index
-
-  console.log(theIndex())
-
-  return {
-    getIndex,
-    theIndex
-  }
-
 }
-dropIndex()
-
-console.log(dropIndex().theIndex)
-// game.playRound(getIndex());
-
-
-// // function getIndex (playerMark){
-// //   let index = '';
-// //   let index2 = '2';
-// //   return {
-// //     index,
-// //     index2
-// //   }
-// // }
-// game.playRound(dropIndex().getIndex);
-
-
-
-// function getIndex (){
-//   let index = '';
-
-//   const addIndex = () => {
-//     index = 
-//   }
-// }
-// function getIndex (){
-//   let index = 0;
-//   const addIndex = (player) => {
-//     value = player;
-//   };
-//   const getValue = () => value;
-
-//   return {
-//     addToken,
-//     getValue
-//   };
-//   }
+getIndex()
