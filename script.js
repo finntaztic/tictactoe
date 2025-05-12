@@ -61,17 +61,19 @@ function GameBoard (){
   }
 
 
-    const playerMark = () => {
-    let boxes = document.querySelectorAll('.boxes');
-    console.log(boxes);
+  const playerMark = () => {
+    let boxes = document.querySelectorAll ('.boxes');
+    console.log (boxes)
 
-    boxes.forEach((box) => {
+
+      boxes.forEach((box) => {
       box.addEventListener('click', () => {
         console.log ('box is clicked');
+        let index = '1';
+        console.log(index)
       })
     })
   }
-  playerMark();
 
   return {
     getBoard, 
@@ -123,7 +125,9 @@ function GameController (
   };
 
   board.display(); //initial display
-  
+
+
+
   const playRound = (index) => {
     console.log(`Marking ${getActivePlayer().name}'s token into index: ${index}`);
     board.dropToken(index, getActivePlayer().token);
@@ -134,8 +138,12 @@ function GameController (
     const container = document.getElementById('container');
     container.remove(); //removes initial display
     board.display(); // display the updated board
+    board.playerMark();// this perfectly works here, but this is the source of index
+    //and should prompt before playRound
+
   };
     printNewRound();
+
 
   return {
     playRound,
@@ -145,8 +153,3 @@ function GameController (
 const game = GameController();
 
 game.playRound(0);
-game.playRound(1);
-game.playRound(2);
-game.playRound(3);
-game.playRound(4);
-game.playRound(5);
