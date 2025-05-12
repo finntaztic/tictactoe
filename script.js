@@ -50,7 +50,7 @@ function GameBoard (){
 
     getBoard().forEach(item => {
       const div = document.createElement('div');
-      div.className = 'boxes';
+      div.className = 'boxes-1';
       container.appendChild(div);
 
       if (item.getValue() == '1' || item.getValue() == '2'){
@@ -62,19 +62,22 @@ function GameBoard (){
 
 
   const playerMark = () => {
-    let boxes = document.querySelectorAll ('.boxes');
-    console.log (boxes)
-
-
-      boxes.forEach((box) => {
+    let boxes = document.querySelectorAll ('.boxes-1');
+    
+    boxes.forEach((box) => {
       box.addEventListener('click', () => {
         console.log ('box is clicked');
-        let index = '1';
-        console.log(index)
-      })
-    })
-  }
 
+        if (box.className == 'boxes-1'){
+          let index = '1';
+          console.log (index)
+        } else return ('nope')
+      })
+      })
+
+  } 
+
+  playerMark()
   return {
     getBoard, 
     dropToken, 
@@ -127,7 +130,6 @@ function GameController (
   board.display(); //initial display
 
 
-
   const playRound = (index) => {
     console.log(`Marking ${getActivePlayer().name}'s token into index: ${index}`);
     board.dropToken(index, getActivePlayer().token);
@@ -152,4 +154,26 @@ function GameController (
 };
 const game = GameController();
 
-game.playRound(0);
+
+function getIndex (playerMark){
+  let index = '';
+  let index2 = '2';
+  return {
+    index,
+    index2
+  }
+}
+game.playRound(playerMark().index);
+
+// function getIndex (){
+//   let index = 0;
+//   const addIndex = (player) => {
+//     value = player;
+//   };
+//   const getValue = () => value;
+
+//   return {
+//     addToken, 
+//     getValue
+//   };
+//   }
