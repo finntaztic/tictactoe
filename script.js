@@ -47,18 +47,20 @@ function GameBoard (){
     const container = document.createElement('div');
     container.id = 'container';
     body.appendChild(container);
-
-    getBoard().forEach(item => {
+  
+    // const board = getBoard(); 
+  
+    board.forEach((item, index) => {
       const div = document.createElement('div');
-      div.className = 'boxes-1';
+      div.className = `boxes-${index + 1}`;
       container.appendChild(div);
-
-      if (item.getValue() == '1' || item.getValue() == '2'){
-        let textNode = document.createTextNode(item.getValue())
+  
+      if (item.getValue() == '1' || item.getValue() == '2') {
+        let textNode = document.createTextNode(item.getValue());
         div.appendChild(textNode);
-      } else return;
-    })
-  }
+      }
+    });
+  };
 
   return {
     getBoard,
@@ -110,8 +112,53 @@ function GameController (
 
   board.display(); //initial display
 
+  // const findIndex = () => {
+  //   let boxes = document.querySelectorAll ('div[class^="boxes-"]');
 
-  const playRound = (index) => {
+  //       boxes.forEach((box) => {
+  //         box.addEventListener('click', () => {
+  //           let index;
+
+  //           if (box.className === 'boxes-1'){
+  //             console.log('box is clicked') 
+  //             index = '5';
+  //             console.log (index)
+  //           }
+
+  //         })
+  //         })
+  // }
+
+  const testIndex = () => {
+
+    const testFindIndex = () => {
+      let index = '';
+      index = '5';
+      console.log (index)
+      return {
+        index
+      }
+    }
+
+    const getIndex = () => testFindIndex().index
+    return {
+      testFindIndex,
+      getIndex
+    }
+  }
+
+  testIndex()
+
+  const findIndex = () => {
+    let index;
+    index = '4';
+
+    return {
+      index
+    }
+  }
+
+  const playRound = (index = findIndex().index) => {
     console.log(`Marking ${getActivePlayer().name}'s token into index: ${index}`);
     board.dropToken(index, getActivePlayer().token);
 
@@ -121,32 +168,42 @@ function GameController (
     const container = document.getElementById('container');
     container.remove(); //removes initial display
     board.display(); // display the updated board
+
   };
     printNewRound();
 
 
   return {
     playRound,
-    getActivePlayer
+    getActivePlayer,
+    printNewRound
   };
 };
 const game = GameController();
+game.playRound()
 
+// function getIndex (){
+//   let boxes = document.querySelectorAll ('div[class^="boxes-"]');
 
-function getIndex (){
-  let boxes = document.querySelectorAll ('.boxes-1');
+//     boxes.forEach((box) => {
+//       box.addEventListener('click', () => {
+//         console.log('box is clicked') 
+//         let index;
 
-    boxes.forEach((box) => {
-      box.addEventListener('click', () => {
-        console.log ('box is clicked');
-        let index;
+//         if (box.className === 'boxes-1'){
+//           index = '0';
+//           console.log (index)
+//           console.log ('box is clicked');
+//           // game.playRound(index)
 
-        if (box.className == 'boxes-1'){
-          index = '1';
-          console.log (index)
-          game.playRound(index)
-        } else return ('nope')
-      })
-      })
-}
-getIndex()
+//         } else if (box.className === 'boxes-2'){
+//           index = '1';
+//           console.log (index)
+//           console.log ('box is clicked');
+//           // game.playRound(index)
+//         }
+//       })
+//       })
+// }
+// getIndex()
+
