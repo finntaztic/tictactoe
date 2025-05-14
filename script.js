@@ -123,11 +123,9 @@ function GameController (
     const container = document.getElementById('container');
     container.remove(); //removes initial display
     board.display(); // display the updated board
-
+    getIndex()
   };
     getIndex()
-    // playRound(index)
-
     printNewRound();
 
     function getIndex (){
@@ -141,22 +139,50 @@ function GameController (
             if (box.className == 'boxes-1'){
               index = '0';
               playRound(index);
-
             } else if (box.className == 'boxes-2'){
               index = '1';
               console.log (index)
               console.log ('box is clicked');
-              // playRound();
-
               playRound(index)
-
-              // GameController()
-            }
+            } else if (box.className == 'boxes-3'){
+              index = '2';
+              console.log (index)
+              console.log ('box is clicked');
+              playRound(index)
+            } else if (box.className == 'boxes-4'){
+              index = '3';
+              console.log (index)
+              console.log ('box is clicked');
+              playRound(index)
+            } else if (box.className == 'boxes-5'){
+              index = '4';
+              console.log (index)
+              console.log ('box is clicked');
+              playRound(index)
+            } else if (box.className == 'boxes-6'){
+              index = '5';
+              console.log (index)
+              console.log ('box is clicked');
+              playRound(index)
+            } else if (box.className == 'boxes-7'){
+              index = '6';
+              console.log (index)
+              console.log ('box is clicked');
+              playRound(index)
+            } else if (box.className == 'boxes-8'){
+              index = '7';
+              console.log (index)
+              console.log ('box is clicked');
+              playRound(index)
+            } else if (box.className == 'boxes-9'){
+              index = '8';
+              console.log (index)
+              console.log ('box is clicked');
+              playRound(index)
+            } 
           })
           })
     }
-    // playRound() // this triggers getValue not having value
-
   return {
     playRound,
     getActivePlayer,
@@ -165,6 +191,16 @@ function GameController (
 };
 
 GameController()
+
+
+
+
+
+
+
+
+
+
 // const game = GameController();
 
 //   let boxes = document.querySelectorAll ('div[class^="boxes-"]');
