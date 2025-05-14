@@ -112,35 +112,13 @@ function GameController (
 
   board.display(); //initial display
 
-  function getIndex (){
-    let boxes = document.querySelectorAll ('div[class^="boxes-"]');
-  
-      boxes.forEach((box) => {
-        box.addEventListener('click', () => {
-          console.log('box is clicked')
-          let index;
-  
-          if (box.className == 'boxes-1'){
-            index = '0';
-            console.log (index)
-            console.log ('box is clicked');
-            game.playRound(index)
-  
-          } else if (box.className == 'boxes-2'){
-            index = '1';
-            console.log (index)
-            console.log ('box is clicked');
-            game.playRound(index)
-          }
-        })
-        })
-  }
-  getIndex();
 
+getIndex();
   const playRound = (index) => {
     console.log(`Marking ${getActivePlayer().name}'s token into index: ${index}`);
     board.dropToken(index, getActivePlayer().token);
 
+    // getIndex();
     switchPlayerTurn();
     printNewRound();
     board.checkWinner();
@@ -149,8 +127,39 @@ function GameController (
     board.display(); // display the updated board
   };
     printNewRound();
-    playRound();
-    getIndex();
+
+
+
+    function getIndex (){
+      let boxes = document.querySelectorAll ('div[class^="boxes-"]');
+    
+        boxes.forEach((box) => {
+          box.addEventListener('click', () => {
+            console.log('box is clicked')
+            let index;
+    
+            if (box.className == 'boxes-1'){
+              index = '0';
+              console.log (index)
+              console.log ('box is clicked');
+              playRound();
+              // game.playRound(index)
+              // GameController()
+    
+            } else if (box.className == 'boxes-2'){
+              index = '1';
+              console.log (index)
+              console.log ('box is clicked');
+              playRound();
+
+              // playRound(index)
+              // GameController()
+            }
+          })
+          })
+      // playRound()
+    }
+    getIndex()
   return {
     playRound,
     getActivePlayer,
@@ -165,18 +174,21 @@ const game = GameController();
 //   box.addEventListener('click', () => {
 //     console.log ('box is clicked');
 //     let index;
+//     // const game = GameController();
+
 
 //         if (box.className == 'boxes-1'){
 //           index = '0';
 //           console.log (index)
 //           console.log ('box is clicked');
 //           game.playRound(index)
-
+//           GameController();
 //         } else if (box.className == 'boxes-2'){
 //           index = '1';
 //           console.log (index)
 //           console.log ('box is clicked');
 //           game.playRound(index)
+//           GameController();
 //         }
 //   }
 // )})
@@ -188,29 +200,32 @@ const game = GameController();
 
 
 
-// function getIndex (){
-//   let boxes = document.querySelectorAll ('div[class^="boxes-"]');
+function getIndex (){
+  let boxes = document.querySelectorAll ('div[class^="boxes-"]');
 
-//     boxes.forEach((box) => {
-//       box.addEventListener('click', () => {
-//         console.log('box is clicked')
-//         let index;
+    boxes.forEach((box) => {
+      box.addEventListener('click', () => {
+        console.log('box is clicked')
+        let index;
 
-//         if (box.className == 'boxes-1'){
-//           index = '0';
-//           console.log (index)
-//           console.log ('box is clicked');
-//           game.playRound(index)
+        if (box.className == 'boxes-1'){
+          index = '0';
+          console.log (index)
+          console.log ('box is clicked');
+          playRound()
+          // GameController()
 
-//         } else if (box.className == 'boxes-2'){
-//           index = '1';
-//           console.log (index)
-//           console.log ('box is clicked');
-//           game.playRound(index)
-//         }
-//       })
-//       })
-// }
+        } else if (box.className == 'boxes-2'){
+          index = '1';
+          console.log (index)
+          console.log ('box is clicked');
+          game.playRound(index)
+          // GameController()
+        }
+      })
+      })
+}
+getIndex()
 
 
 // function getIndex (){
