@@ -113,60 +113,59 @@ function GameController (
   board.display(); //initial display
 
 
-getIndex();
   const playRound = (index) => {
     console.log(`Marking ${getActivePlayer().name}'s token into index: ${index}`);
     board.dropToken(index, getActivePlayer().token);
 
-    // getIndex();
     switchPlayerTurn();
     printNewRound();
     board.checkWinner();
     const container = document.getElementById('container');
     container.remove(); //removes initial display
     board.display(); // display the updated board
+
   };
+    getIndex()
+    // playRound(index)
+
     printNewRound();
-
-
 
     function getIndex (){
       let boxes = document.querySelectorAll ('div[class^="boxes-"]');
-    
+
         boxes.forEach((box) => {
           box.addEventListener('click', () => {
             console.log('box is clicked')
             let index;
-    
+
             if (box.className == 'boxes-1'){
               index = '0';
-              console.log (index)
-              console.log ('box is clicked');
-              playRound();
-              // game.playRound(index)
-              // GameController()
-    
+              playRound(index);
+
             } else if (box.className == 'boxes-2'){
               index = '1';
               console.log (index)
               console.log ('box is clicked');
-              playRound();
+              // playRound();
 
-              // playRound(index)
+              playRound(index)
+
               // GameController()
             }
           })
           })
-      // playRound()
     }
-    getIndex()
+    // playRound() // this triggers getValue not having value
+
   return {
     playRound,
     getActivePlayer,
     printNewRound
   };
 };
-const game = GameController();
+
+GameController()
+// const game = GameController();
 
 //   let boxes = document.querySelectorAll ('div[class^="boxes-"]');
 
@@ -200,32 +199,32 @@ const game = GameController();
 
 
 
-function getIndex (){
-  let boxes = document.querySelectorAll ('div[class^="boxes-"]');
+// function getIndex (){
+//   let boxes = document.querySelectorAll ('div[class^="boxes-"]');
 
-    boxes.forEach((box) => {
-      box.addEventListener('click', () => {
-        console.log('box is clicked')
-        let index;
+//     boxes.forEach((box) => {
+//       box.addEventListener('click', () => {
+//         console.log('box is clicked')
+//         let index;
 
-        if (box.className == 'boxes-1'){
-          index = '0';
-          console.log (index)
-          console.log ('box is clicked');
-          playRound()
-          // GameController()
+//         if (box.className == 'boxes-1'){
+//           index = '0';
+//           console.log (index)
+//           console.log ('box is clicked');
+//           playRound()
+//           // GameController()
 
-        } else if (box.className == 'boxes-2'){
-          index = '1';
-          console.log (index)
-          console.log ('box is clicked');
-          game.playRound(index)
-          // GameController()
-        }
-      })
-      })
-}
-getIndex()
+//         } else if (box.className == 'boxes-2'){
+//           index = '1';
+//           console.log (index)
+//           console.log ('box is clicked');
+//           game.playRound(index)
+//           // GameController()
+//         }
+//       })
+//       })
+// }
+// getIndex()
 
 
 // function getIndex (){
