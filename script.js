@@ -15,17 +15,17 @@ function GameBoard (){
   }
 
   const checkWinner = () => {
-    if ((board[0].getValue() === 1 && board[3].getValue() === 1 && board[6].getValue() === 1)
-      || (board[1].getValue() === 1 && board[4].getValue() === 1 && board[7].getValue() === 1)
-      || (board[2].getValue() === 1 && board[5].getValue() === 1 && board[8].getValue() === 1)
-      || (board[0].getValue() === 1 && board[4].getValue() === 1 && board[8].getValue() === 1)
-      || (board[2].getValue() === 1 && board[4].getValue() === 1 && board[6].getValue() === 1)){
+    if ((board[0].getValue() === 'X' && board[3].getValue() === 'X' && board[6].getValue() === 'X')
+      || (board[1].getValue() === 'X' && board[4].getValue() === 'X' && board[7].getValue() === 'X')
+      || (board[2].getValue() === 'X' && board[5].getValue() === 'X' && board[8].getValue() === 'X')
+      || (board[0].getValue() === 'X' && board[4].getValue() === 'X' && board[8].getValue() === 'X')
+      || (board[2].getValue() === 'X' && board[4].getValue() === 'X' && board[6].getValue() === 'X')){
       console.log("Player 1 wins this round 🎉")
-    } else if ((board[0].getValue() === 2 && board[3].getValue() === 2 && board[6].getValue() === 2)
-      || (board[1].getValue() === 2 && board[4].getValue() === 2 && board[7].getValue() === 2)
-      || (board[2].getValue() === 2 && board[5].getValue() === 2 && board[8].getValue() === 2)
-      || (board[0].getValue() === 2 && board[4].getValue() === 2 && board[8].getValue() === 2)
-      || (board[2].getValue() === 2 && board[4].getValue() === 2 && board[6].getValue() === 2)){
+    } else if ((board[0].getValue() === 2 && board[3].getValue() === 'O' && board[6].getValue() === 'O')
+      || (board[1].getValue() === 'O' && board[4].getValue() === 'O' && board[7].getValue() === 'O')
+      || (board[2].getValue() === 'O' && board[5].getValue() === 'O' && board[8].getValue() === 'O')
+      || (board[0].getValue() === 'O' && board[4].getValue() === 'O' && board[8].getValue() === 'O')
+      || (board[2].getValue() === 'O' && board[4].getValue() === 'O' && board[6].getValue() === 'O')){
       console.log("Player 2 wins this round 🎉🎉")
     }
     else if (
@@ -55,7 +55,7 @@ function GameBoard (){
       div.className = `boxes-${index + 1}`;
       container.appendChild(div);
 
-      if (item.getValue() == '1' || item.getValue() == '2') {
+      if (item.getValue() == 'X' || item.getValue() == 'O') {
         let textNode = document.createTextNode(item.getValue());
         div.appendChild(textNode);
       }
@@ -92,11 +92,11 @@ function GameController (
   const players = [
     {
       name: playerOneName,
-      token: 1
+      token: 'X'
     },
     {
       name: playerTwoName,
-      token: 2
+      token: 'O'
     }
   ];
   let activePlayer = players [0];
@@ -191,3 +191,200 @@ function GameController (
 };
 
 GameController()
+
+
+
+///working code before changing value of 1 to x
+// function GameBoard (){
+//   const cell = 9;
+//   const board = [];
+
+//   for (let i = 0; i < cell; i++){
+//     board.push(Cell());
+//   }
+
+//   const getBoard = () => board;
+
+//   const dropToken = (index, player) => {
+//     if (board[index].getValue() === 0){
+//       board[index].addToken(player)
+//     } else return;
+//   }
+
+//   const checkWinner = () => {
+//     if ((board[0].getValue() === 1 && board[3].getValue() === 1 && board[6].getValue() === 1)
+//       || (board[1].getValue() === 1 && board[4].getValue() === 1 && board[7].getValue() === 1)
+//       || (board[2].getValue() === 1 && board[5].getValue() === 1 && board[8].getValue() === 1)
+//       || (board[0].getValue() === 1 && board[4].getValue() === 1 && board[8].getValue() === 1)
+//       || (board[2].getValue() === 1 && board[4].getValue() === 1 && board[6].getValue() === 1)){
+//       console.log("Player 1 wins this round 🎉")
+//     } else if ((board[0].getValue() === 2 && board[3].getValue() === 2 && board[6].getValue() === 2)
+//       || (board[1].getValue() === 2 && board[4].getValue() === 2 && board[7].getValue() === 2)
+//       || (board[2].getValue() === 2 && board[5].getValue() === 2 && board[8].getValue() === 2)
+//       || (board[0].getValue() === 2 && board[4].getValue() === 2 && board[8].getValue() === 2)
+//       || (board[2].getValue() === 2 && board[4].getValue() === 2 && board[6].getValue() === 2)){
+//       console.log("Player 2 wins this round 🎉🎉")
+//     }
+//     else if (
+//       board[0].getValue() !== 0 && board[1].getValue() !== 0 && board[2].getValue() !== 0
+//       && board[3].getValue() !== 0 && board[4].getValue() !== 0 && board[5].getValue() !== 0
+//       && board[6].getValue() !== 0 && board[7].getValue() !== 0 && board[8].getValue() !== 0
+//     ){
+//       console.log("It's a tie")
+//     } else return;
+//   }
+
+//   const printBoard = () => {
+//     const boardCell = board.map((cell => cell.getValue()));
+//     console.log(boardCell)
+//   };
+
+//   const display = () => {
+//     const body = document.querySelector('body');
+//     const container = document.createElement('div');
+//     container.id = 'container';
+//     body.appendChild(container);
+
+//     // const board = getBoard();
+
+//     board.forEach((item, index) => {
+//       const div = document.createElement('div');
+//       div.className = `boxes-${index + 1}`;
+//       container.appendChild(div);
+
+//       if (item.getValue() == '1' || item.getValue() == '2') {
+//         let textNode = document.createTextNode(item.getValue());
+//         div.appendChild(textNode);
+//       }
+//     });
+//   };
+
+//   return {
+//     getBoard,
+//     dropToken,
+//     printBoard,
+//     checkWinner,
+//     display
+//   };
+// }
+
+// function Cell (){
+//   let value = 0;
+//   const addToken = (player) => {
+//     value = player;
+//   };
+//   const getValue = () => value;
+
+//   return {
+//     addToken,
+//     getValue
+//   };
+//   }
+
+// function GameController (
+//   playerOneName = 'Player 1',
+//   playerTwoName = 'Player 2'
+// ){
+//   const board = GameBoard();
+//   const players = [
+//     {
+//       name: playerOneName,
+//       token: 1
+//     },
+//     {
+//       name: playerTwoName,
+//       token: 2
+//     }
+//   ];
+//   let activePlayer = players [0];
+//   const switchPlayerTurn = () => {
+//     activePlayer = activePlayer === players [0] ? players [1] : players [0]
+
+//   };
+//   const getActivePlayer = () => activePlayer;
+//   const printNewRound = () => {
+//     board.printBoard();
+//     console.log(`${getActivePlayer().name}'s turn.`)
+//   };
+
+//   board.display(); //initial display
+
+
+//   const playRound = (index) => {
+//     console.log(`Marking ${getActivePlayer().name}'s token into index: ${index}`);
+//     board.dropToken(index, getActivePlayer().token);
+
+//     switchPlayerTurn();
+//     printNewRound();
+//     board.checkWinner();
+//     const container = document.getElementById('container');
+//     container.remove(); //removes initial display
+//     board.display(); // display the updated board
+//     getIndex()
+//   };
+//     getIndex()
+//     printNewRound();
+
+//     function getIndex (){
+//       let boxes = document.querySelectorAll ('div[class^="boxes-"]');
+
+//         boxes.forEach((box) => {
+//           box.addEventListener('click', () => {
+//             console.log('box is clicked')
+//             let index;
+
+//             if (box.className == 'boxes-1'){
+//               index = '0';
+//               playRound(index);
+//             } else if (box.className == 'boxes-2'){
+//               index = '1';
+//               console.log (index)
+//               console.log ('box is clicked');
+//               playRound(index)
+//             } else if (box.className == 'boxes-3'){
+//               index = '2';
+//               console.log (index)
+//               console.log ('box is clicked');
+//               playRound(index)
+//             } else if (box.className == 'boxes-4'){
+//               index = '3';
+//               console.log (index)
+//               console.log ('box is clicked');
+//               playRound(index)
+//             } else if (box.className == 'boxes-5'){
+//               index = '4';
+//               console.log (index)
+//               console.log ('box is clicked');
+//               playRound(index)
+//             } else if (box.className == 'boxes-6'){
+//               index = '5';
+//               console.log (index)
+//               console.log ('box is clicked');
+//               playRound(index)
+//             } else if (box.className == 'boxes-7'){
+//               index = '6';
+//               console.log (index)
+//               console.log ('box is clicked');
+//               playRound(index)
+//             } else if (box.className == 'boxes-8'){
+//               index = '7';
+//               console.log (index)
+//               console.log ('box is clicked');
+//               playRound(index)
+//             } else if (box.className == 'boxes-9'){
+//               index = '8';
+//               console.log (index)
+//               console.log ('box is clicked');
+//               playRound(index)
+//             } 
+//           })
+//           })
+//     }
+//   return {
+//     playRound,
+//     getActivePlayer,
+//     printNewRound
+//   };
+// };
+
+// GameController()
