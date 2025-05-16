@@ -131,7 +131,7 @@ function GameController (
     const form = document.createElement ('form');
     dialog.appendChild(form);
 
-    //title
+    //title and inputs
 
     const playerOne = document.createElement('label');
     playerOne.setAttribute('for', 'player_one')
@@ -148,19 +148,28 @@ function GameController (
     playerTwoInput.setAttribute('type', 'text', 'id', 'player_two')
 
     const br1 = document.createElement('br');
+    const br2 = document.createElement('br');
+
 
     form.appendChild(playerOne);
     form.appendChild(playerOneInput);
     form.appendChild(br1);
     form.appendChild(playerTwo);
     form.appendChild(playerTwoInput);
+    form.appendChild(br2);
 
 
+    //button 
 
+    const startBtn = document.createElement('button');
+    startBtn.innerHTML = 'Start'
+    form.appendChild(startBtn)
+
+    startBtn.addEventListener('click', () => {
+      board.display(); //initial display   
+    })
 
     dialog.show();
-
-
   }
 
   showDialog()
