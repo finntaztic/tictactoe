@@ -1,15 +1,6 @@
 
-  //dialog form 
-  const body = document.querySelector('body')
-  const dialog = document.createElement('dialog')
-  const closeBtn = document.createElement ('button')
-  closeBtn.textContent = 'X';
-  const p = document.createElement('p')
-  p.textContent = "Add the book you read 😍";
-  body.appendChild(dialog)
-  
-  dialog.appendChild(closeBtn)
-  dialog.appendChild(p)
+
+
 
 
 
@@ -79,6 +70,8 @@ function GameBoard (){
       } else return;
     });
   };
+
+
 
 
   return {
@@ -204,6 +197,8 @@ function GameController (
           })
           })
     }
+
+  
   return {
     playRound,
     getActivePlayer,
@@ -211,7 +206,29 @@ function GameController (
   };
 };
 
-GameController()
+function showDialog() {
+    //dialog form 
+    const body = document.querySelector('body')
+    const dialog = document.createElement('dialog')
+    const closeBtn = document.createElement ('button')
+    closeBtn.textContent = 'X';
+    const p = document.createElement('p')
+    p.textContent = "Add the book you read 😍";
+    body.appendChild(dialog)
+    
+    dialog.appendChild(closeBtn)
+    dialog.appendChild(p)
+
+    const form = document.createElement ('form');
+    dialog.appendChild(form);
+
+    dialog.show();
+  }
+
+  showDialog()
+
+
+// GameController()
 
 
 //backlog
