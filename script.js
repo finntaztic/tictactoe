@@ -79,7 +79,8 @@ function GameBoard (){
     dropToken,
     printBoard,
     checkWinner,
-    display
+    display,
+    // showDialog
   };
 }
 
@@ -112,6 +113,46 @@ function GameController (
     }
   ];
 
+    const showDialog = () => {
+    const body = document.querySelector('body')
+    const dialog = document.createElement('dialog')
+    const closeBtn = document.createElement ('button')
+    closeBtn.textContent = 'X';
+    const p = document.createElement('p')
+    p.textContent = "Welcome to the Tic Tac Toe Game 😊";
+    const p1 = document.createElement('p')
+    p1.textContent = "Write players name below";
+    body.appendChild(dialog)
+    
+    dialog.appendChild(closeBtn)
+    dialog.appendChild(p)
+    dialog.appendChild(p1)
+
+    const form = document.createElement ('form');
+    dialog.appendChild(form);
+
+    //title
+
+    const playerOne = document.createElement('label');
+    playerOne.innerHTML = 'First Player';
+
+    const playerTwo = document.createElement('label');
+    playerTwo.innerHTML = 'Second Player';
+
+ 
+    form.appendChild(playerOne);
+    form.appendChild(playerTwo);
+
+    form.appendChild(inputTitle);
+
+    form.appendChild(br1);
+
+    dialog.show();
+
+
+  }
+
+  showDialog()
 
   let activePlayer = players [0];
   const switchPlayerTurn = () => {
@@ -124,8 +165,7 @@ function GameController (
     console.log(`${getActivePlayer().name}'s turn.`)
   };
 
-  board.display(); //initial display
-
+  // board.display(); //initial display
 
   const playRound = (index) => {
     console.log(`Marking ${getActivePlayer().name}'s token into index: ${index}`);
@@ -202,33 +242,18 @@ function GameController (
   return {
     playRound,
     getActivePlayer,
-    printNewRound
+    printNewRound,
+    // showDialog
   };
 };
 
-function showDialog() {
-    //dialog form 
-    const body = document.querySelector('body')
-    const dialog = document.createElement('dialog')
-    const closeBtn = document.createElement ('button')
-    closeBtn.textContent = 'X';
-    const p = document.createElement('p')
-    p.textContent = "Add the book you read 😍";
-    body.appendChild(dialog)
-    
-    dialog.appendChild(closeBtn)
-    dialog.appendChild(p)
-
-    const form = document.createElement ('form');
-    dialog.appendChild(form);
-
-    dialog.show();
-  }
-
-  showDialog()
+GameController()
 
 
-// GameController()
+//pick up assignment 
+//1. the board display in the game controller displays the table content 
+//2. so the dialog start button should promote the board display 
+
 
 
 //backlog
