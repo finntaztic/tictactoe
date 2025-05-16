@@ -49,7 +49,7 @@ function GameBoard (){
     console.log(boardCell)
   };
 
-  
+
 
   const display = () => {
     const body = document.querySelector('body');
@@ -123,7 +123,7 @@ function GameController (
     const p1 = document.createElement('p')
     p1.textContent = "Write players name below";
     body.appendChild(dialog)
-    
+
     dialog.appendChild(closeBtn)
     dialog.appendChild(p)
     dialog.appendChild(p1)
@@ -134,18 +134,29 @@ function GameController (
     //title
 
     const playerOne = document.createElement('label');
+    playerOne.setAttribute('for', 'player_one')
     playerOne.innerHTML = 'First Player';
 
+    const playerOneInput = document.createElement('input');
+    playerOneInput.setAttribute('type', 'text', 'id', 'player_one')
+
     const playerTwo = document.createElement('label');
+    playerTwo.setAttribute('for', 'player_two');
     playerTwo.innerHTML = 'Second Player';
 
- 
+    const playerTwoInput = document.createElement('input');
+    playerTwoInput.setAttribute('type', 'text', 'id', 'player_two')
+
+    const br1 = document.createElement('br');
+
     form.appendChild(playerOne);
-    form.appendChild(playerTwo);
-
-    form.appendChild(inputTitle);
-
+    form.appendChild(playerOneInput);
     form.appendChild(br1);
+    form.appendChild(playerTwo);
+    form.appendChild(playerTwoInput);
+
+
+
 
     dialog.show();
 
@@ -233,12 +244,12 @@ function GameController (
               console.log (index)
               console.log ('box is clicked');
               playRound(index)
-            } 
+            }
           })
           })
     }
 
-  
+
   return {
     playRound,
     getActivePlayer,
@@ -250,14 +261,14 @@ function GameController (
 GameController()
 
 
-//pick up assignment 
-//1. the board display in the game controller displays the table content 
-//2. so the dialog start button should promote the board display 
+//pick up assignment
+//1. the board display in the game controller displays the table content
+//2. so the dialog start button should promote the board display
 
 
 
 //backlog
-//1. gameOver , shouldnt allow to add turn to the box when theres winner -- idk  its ok 
+//1. gameOver , shouldnt allow to add turn to the box when theres winner -- idk  its ok
 //2. shouldnt be able to click on the occupied box so player's turn doesnt get counted
 //3. reset button
 //4. allow players to add their name
