@@ -14,27 +14,23 @@ function GameBoard (){
     } else return;
   }
 
-  const checkWinner = () => {
-    if ((board[0].getValue() === 'X' && board[3].getValue() === 'X' && board[6].getValue() === 'X')
-      || (board[1].getValue() === 'X' && board[4].getValue() === 'X' && board[7].getValue() === 'X')
-      || (board[2].getValue() === 'X' && board[5].getValue() === 'X' && board[8].getValue() === 'X')
-      || (board[0].getValue() === 'X' && board[4].getValue() === 'X' && board[8].getValue() === 'X')
-      || (board[2].getValue() === 'X' && board[4].getValue() === 'X' && board[6].getValue() === 'X')){
-      console.log("Player 1 wins this round 🎉")
-    } else if ((board[0].getValue() === 2 && board[3].getValue() === 'O' && board[6].getValue() === 'O')
-      || (board[1].getValue() === 'O' && board[4].getValue() === 'O' && board[7].getValue() === 'O')
-      || (board[2].getValue() === 'O' && board[5].getValue() === 'O' && board[8].getValue() === 'O')
-      || (board[0].getValue() === 'O' && board[4].getValue() === 'O' && board[8].getValue() === 'O')
-      || (board[2].getValue() === 'O' && board[4].getValue() === 'O' && board[6].getValue() === 'O')){
-      console.log("Player 2 wins this round 🎉🎉")
-    }
-    else if (
-      board[0].getValue() !== 0 && board[1].getValue() !== 0 && board[2].getValue() !== 0
-      && board[3].getValue() !== 0 && board[4].getValue() !== 0 && board[5].getValue() !== 0
-      && board[6].getValue() !== 0 && board[7].getValue() !== 0 && board[8].getValue() !== 0
-    ){
-      console.log("It's a tie")
-    } else return;
+  const announceWinner  = (playerName) => {
+    const dialog2 = document.getElementById('dialog2');
+    const annMent = document.createElement('h1');
+    annMent.textContent = `${playerName} wins!`;
+    dialog2.appendChild(annMent);
+
+    const btn = document.createElement('button');
+    btn.innerHTML = 'Start/ Restart';
+    btn.id = "startBtn";
+    dialog2.appendChild(btn);
+
+    // Add event listener to reload the page
+    btn.addEventListener('click', () => {
+      location.reload();
+    });
+
+    dialog2.showModal();
   }
 
   const printBoard = () => {
@@ -64,8 +60,8 @@ function GameBoard (){
     getBoard,
     dropToken,
     printBoard,
-    checkWinner,
     display,
+    announceWinner // Make sure to return announceWinner
   };
 }
 
@@ -83,31 +79,33 @@ function Cell (){
   };
   }
 
-function playerMaker (){
-    
-    const dialog = document.getElementById('dialog1')
-    const firstPlayerInput = document.getElementById('first_player');
-    const secondPlayerInput = document.getElementById('second_player');
-    const startButton = document.querySelector('button');
+(function playerMaker () {
+  const dialog = document.getElementById('dialog1');
+  const firstPlayerInput = document.getElementById('first_player');
+  const secondPlayerInput = document.getElementById('second_player');
+  const startButton = document.querySelector('button');
 
-    dialog.showModal()
-    let firstPlayerName;
-    startButton.addEventListener('click', (e) => {
-      e.preventDefault();
-      firstPlayerName = firstPlayerInput.value;
-      secondPlayerName = secondPlayerInput.value;
-      GameController(firstPlayerName, secondPlayerName)
-      dialog.close()
-    })
-  }
-playerMaker()
+  dialog.showModal();
+
+  let firstPlayerName;
+  let secondPlayerName;
+
+  startButton.addEventListener('click', (e) => {
+    e.preventDefault();
+    firstPlayerName = firstPlayerInput.value;
+    secondPlayerName = secondPlayerInput.value;
+    GameController(firstPlayerName, secondPlayerName);
+    dialog.close();
+  });
+})();
+
 
 
 function GameController (
   playerOneName = 'Player 1',
   playerTwoName = 'Player 2'
 ){
-  const board = GameBoard();
+  const board = GameBoard(); // Get an instance of GameBoard which now has announceWinner
 
     const players = [
     {
@@ -120,11 +118,40 @@ function GameController (
     }
   ];
 
+  const checkWinner = () => {
+    const currentBoard = board.getBoard(); // Get the actual game board
+    if ((currentBoard[0].getValue() === 'X' && currentBoard[3].getValue() === 'X' && currentBoard[6].getValue() === 'X')
+      || (currentBoard[1].getValue() === 'X' && currentBoard[4].getValue() === 'X' && currentBoard[7].getValue() === 'X')
+      || (currentBoard[2].getValue() === 'X' && currentBoard[5].getValue() === 'X' && currentBoard[8].getValue() === 'X')
+      || (currentBoard[0].getValue() === 'X' && currentBoard[4].getValue() === 'X' && currentBoard[8].getValue() === 'X')
+      || (currentBoard[2].getValue() === 'X' && currentBoard[4].getValue() === 'X' && currentBoard[6].getValue() === 'X')){
+      console.log(`${playerOneName} wins this round 🎉`)
+      board.announceWinner(playerOneName) // Call announceWinner on the board instance
+    } else if ((currentBoard[0].getValue() === 'O' && currentBoard[3].getValue() === 'O' && currentBoard[6].getValue() === 'O')
+      || (currentBoard[1].getValue() === 'O' && currentBoard[4].getValue() === 'O' && currentBoard[7].getValue() === 'O')
+      || (currentBoard[2].getValue() === 'O' && currentBoard[5].getValue() === 'O' && currentBoard[8].getValue() === 'O')
+      || (currentBoard[0].getValue() === 'O' && currentBoard[4].getValue() === 'O' && currentBoard[8].getValue() === 'O')
+      || (currentBoard[2].getValue() === 'O' && currentBoard[4].getValue() === 'O' && currentBoard[6].getValue() === 'O')){
+      console.log(`${playerTwoName} wins this round 🎉🎉`)
+      board.announceWinner(playerTwoName) // Call announceWinner on the board instance
+    }
+    else if (
+      currentBoard[0].getValue() !== 0 && currentBoard[1].getValue() !== 0 && currentBoard[2].getValue() !== 0
+      && currentBoard[3].getValue() !== 0 && currentBoard[4].getValue() !== 0 && currentBoard[5].getValue() !== 0
+      && currentBoard[6].getValue() !== 0 && currentBoard[7].getValue() !== 0 && currentBoard[8].getValue() !== 0
+    ){
+      console.log("It's a tie")
+      board.announceWinner('No one') // Call announceWinner on the board instance for a tie
+    } else {
+      // Game continues
+    }
+  }
+
   let activePlayer = players [0];
   const switchPlayerTurn = () => {
     activePlayer = activePlayer === players [0] ? players [1] : players [0]
   };
-  
+
   const getActivePlayer = () => activePlayer;
   const printNewRound = () => {
     board.printBoard();
@@ -140,10 +167,12 @@ function GameController (
 
     switchPlayerTurn();
     printNewRound();
-    board.checkWinner();
+    checkWinner(); // Call checkWinner after a move is made
     const container = document.getElementById('container');
-    container.remove(); //removes initial display
-    board.display(); // display the updated board
+    if (container) {
+      container.remove(); //removes initial display
+      board.display(); // display the updated board
+    }
     getIndex()
   };
     getIndex()
@@ -209,22 +238,6 @@ function GameController (
   return {
     playRound,
     getActivePlayer,
-    printNewRound,
-  };
+    printNewRound
+    };
 };
-
-// GameController()
-
-
-//pick up assignment
-//1. the board display in the game controller displays the table content
-//2. so the dialog start button should promote the board display
-
-
-
-//backlog
-//1. gameOver , shouldnt allow to add turn to the box when theres winner -- idk  its ok
-//2. shouldnt be able to click on the occupied box so player's turn doesnt get counted
-//3. reset button
-//4. allow players to add their name
-//5. start game button
