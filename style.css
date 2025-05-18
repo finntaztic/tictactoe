@@ -14,6 +14,37 @@
 }
 
 
+dialog::backdrop {
+      background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
+    }
+/* :root {
+  --color-backdrop: red;
+}
+
+::backdrop {
+  --color-backdrop: red;
+}
+
+dialog::backdrop {
+  background: var(--color-backdrop);
+} */
+
+/* ::backdrop {
+  background-image: linear-gradient(
+    45deg,
+    magenta,
+    rebeccapurple,
+    dodgerblue,
+    green
+  );
+  opacity: 0.75;
+} */
+
+dialog {
+    background-color: white;
+}
+
+
 body {
     display: flex;
     justify-content: center;
@@ -41,6 +72,3 @@ body {
     width: 10em;
 }
 
-dialog {
-    background-color: blue;
-}

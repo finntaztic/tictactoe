@@ -1,10 +1,3 @@
-
-
-
-
-
-
-
 function GameBoard (){
   const cell = 9;
   const board = [];
@@ -49,8 +42,6 @@ function GameBoard (){
     console.log(boardCell)
   };
 
-
-
   const display = () => {
     const body = document.querySelector('body');
     const container = document.createElement('div');
@@ -71,9 +62,6 @@ function GameBoard (){
     });
   };
 
-
-
-
   return {
     getBoard,
     dropToken,
@@ -83,6 +71,80 @@ function GameBoard (){
     // showDialog
   };
 }
+
+
+// function makeDialog (){
+//       const body = document.querySelector('body')
+//       const dialog = document.createElement('dialog')
+//       const closeBtn = document.createElement ('button')
+//       closeBtn.textContent = 'X';
+//       const p = document.createElement('p')
+//       p.textContent = "Welcome to the Tic Tac Toe Game 😊";
+//       const p1 = document.createElement('p')
+//       p1.textContent = "Write players name below";
+//       body.appendChild(dialog)
+
+//       dialog.appendChild(closeBtn)
+//       dialog.appendChild(p)
+//       dialog.appendChild(p1)
+
+//       const form = document.createElement ('form');
+//       dialog.appendChild(form);
+
+//       //title and inputs
+
+//       const playerOne = document.createElement('label');
+//       playerOne.setAttribute('for', 'player_one')
+//       playerOne.innerHTML = 'First Player';
+
+//       const playerOneInput = document.createElement('input');
+//       playerOneInput.setAttribute('type', 'text', 'id', 'player_one')
+
+//       const playerTwo = document.createElement('label');
+//       playerTwo.setAttribute('for', 'player_two');
+//       playerTwo.innerHTML = 'Second Player';
+
+//       const playerTwoInput = document.createElement('input');
+//       playerTwoInput.setAttribute('type', 'text', 'id', 'player_two')
+
+//       const br1 = document.createElement('br');
+//       const br2 = document.createElement('br');
+
+
+//       form.appendChild(playerOne);
+//       form.appendChild(playerOneInput);
+//       form.appendChild(br1);
+//       form.appendChild(playerTwo);
+//       form.appendChild(playerTwoInput);
+//       form.appendChild(br2);
+
+//   const showDialog = () => {
+//       const startBtn = document.createElement('button');
+//       startBtn.innerHTML = 'Start'
+//       form.appendChild(startBtn)
+
+//       startBtn.addEventListener('click', (e) => {
+//         e.preventDefault();
+//         dialog.close();
+//         let firstPlayerName = playerOneInput.value;
+//         const firstPlayer = () => firstPlayerName
+//         console.log (firstPlayerName)
+//         let secondPlayerName = playerTwoInput.value;
+//         console.log (secondPlayerName)
+//       })
+//       dialog.showModal();
+//   }
+//   return {
+//     showDialog,
+//     // firstPlayer
+//     // startBtn
+//   }
+// }
+
+// makeDialog().showDialog();
+// makeDialog().firstPlayer();
+// console.log(makeDialog().firstPlayer())
+
 
 function Cell (){
   let value = 0;
@@ -97,12 +159,68 @@ function Cell (){
   };
   }
 
+
+(function (){
+
+});
+
+  const dialog = document.querySelector('dialog')
+  const inputElement = document.querySelector('input');
+  const startButton = document.querySelector('button');
+
+    let playerName;
+
+
+  // startButton.addEventListener('click', (e) => {
+  //   e.preventDefault();
+  //   playerName = inputElement.value;
+  //   console.log(playerName)
+  // })
+  // console.log(playerName)
+
+  // dialog.show()
+
+  // function firstPlayer (){
+  //   console.log(firstPlayerName)
+  //   return firstPlayerName
+  // }
+
+  // let firstPlayerName;
+  // startButton.addEventListener('click', (e) => {
+  //   e.preventDefault();
+  //   firstPlayerName = inputElement.value;
+  //   console.log(firstPlayerName)
+  //   firstPlayer()
+  // })
+  // dialog.show()
+
+
+  function playerMaker (){
+    dialog.show()
+
+    // const firstPlayer = () => {
+    //   console.log(firstPlayerName)
+    //   return firstPlayerName
+    // }
+    let firstPlayerName;
+    startButton.addEventListener('click', (e) => {
+      e.preventDefault();
+      firstPlayerName = inputElement.value;
+      console.log(firstPlayerName)
+      GameController(firstPlayerName, 'player 2')
+    })
+
+  }
+playerMaker()
+
+
 function GameController (
   playerOneName = 'Player 1',
   playerTwoName = 'Player 2'
 ){
   const board = GameBoard();
-  const players = [
+
+    const players = [
     {
       name: playerOneName,
       token: 'X'
@@ -112,81 +230,95 @@ function GameController (
       token: 'O'
     }
   ];
+  //     const body = document.querySelector('body')
+  //     const dialog = document.createElement('dialog')
+  //     const closeBtn = document.createElement ('button')
+  //     closeBtn.textContent = 'X';
+  //     const p = document.createElement('p')
+  //     p.textContent = "Welcome to the Tic Tac Toe Game 😊";
+  //     const p1 = document.createElement('p')
+  //     p1.textContent = "Write players name below";
+  //     body.appendChild(dialog)
 
-    const showDialog = () => {
-    const body = document.querySelector('body')
-    const dialog = document.createElement('dialog')
-    const closeBtn = document.createElement ('button')
-    closeBtn.textContent = 'X';
-    const p = document.createElement('p')
-    p.textContent = "Welcome to the Tic Tac Toe Game 😊";
-    const p1 = document.createElement('p')
-    p1.textContent = "Write players name below";
-    body.appendChild(dialog)
+  //     dialog.appendChild(closeBtn)
+  //     dialog.appendChild(p)
+  //     dialog.appendChild(p1)
 
-    dialog.appendChild(closeBtn)
-    dialog.appendChild(p)
-    dialog.appendChild(p1)
+  //     const form = document.createElement ('form');
+  //     dialog.appendChild(form);
 
-    const form = document.createElement ('form');
-    dialog.appendChild(form);
+  //     //title and inputs
 
-    //title and inputs
+  //     const playerOne = document.createElement('label');
+  //     playerOne.setAttribute('for', 'player_one')
+  //     playerOne.innerHTML = 'First Player';
 
-    const playerOne = document.createElement('label');
-    playerOne.setAttribute('for', 'player_one')
-    playerOne.innerHTML = 'First Player';
+  //     const playerOneInput = document.createElement('input');
+  //     playerOneInput.setAttribute('type', 'text', 'id', 'player_one')
 
-    const playerOneInput = document.createElement('input');
-    playerOneInput.setAttribute('type', 'text', 'id', 'player_one')
+  //     const playerTwo = document.createElement('label');
+  //     playerTwo.setAttribute('for', 'player_two');
+  //     playerTwo.innerHTML = 'Second Player';
 
-    const playerTwo = document.createElement('label');
-    playerTwo.setAttribute('for', 'player_two');
-    playerTwo.innerHTML = 'Second Player';
+  //     const playerTwoInput = document.createElement('input');
+  //     playerTwoInput.setAttribute('type', 'text', 'id', 'player_two')
 
-    const playerTwoInput = document.createElement('input');
-    playerTwoInput.setAttribute('type', 'text', 'id', 'player_two')
-
-    const br1 = document.createElement('br');
-    const br2 = document.createElement('br');
+  //     const br1 = document.createElement('br');
+  //     const br2 = document.createElement('br');
 
 
-    form.appendChild(playerOne);
-    form.appendChild(playerOneInput);
-    form.appendChild(br1);
-    form.appendChild(playerTwo);
-    form.appendChild(playerTwoInput);
-    form.appendChild(br2);
+  //     form.appendChild(playerOne);
+  //     form.appendChild(playerOneInput);
+  //     form.appendChild(br1);
+  //     form.appendChild(playerTwo);
+  //     form.appendChild(playerTwoInput);
+  //     form.appendChild(br2);
 
 
-    //button 
+  //     const startBtn = document.createElement('button');
+  //     startBtn.innerHTML = 'Start'
+  //     form.appendChild(startBtn)
 
-    const startBtn = document.createElement('button');
-    startBtn.innerHTML = 'Start'
-    form.appendChild(startBtn)
+  //     startBtn.addEventListener('click', (e) => {
+  //       e.preventDefault();
 
-    startBtn.addEventListener('click', () => {
-      board.display(); //initial display   
-    })
+  //       let firstPlayerName = playerOneInput.value;
+  //       console.log (firstPlayerName)
+  //       let secondPlayerName = playerTwoInput.value;
+  //       console.log (secondPlayerName)
 
-    dialog.show();
-  }
+  //       dialog.close();
+  //     })
+  //     dialog.showModal();
 
-  showDialog()
+  //   const players = [
+  //   {
+  //     name: playerOneName,
+  //     token: 'X'
+  //   },
+  //   {
+  //     name: playerTwoName,
+  //     token: 'O'
+  //   }
+  // ];
+
+
+
 
   let activePlayer = players [0];
   const switchPlayerTurn = () => {
     activePlayer = activePlayer === players [0] ? players [1] : players [0]
-
   };
+  
   const getActivePlayer = () => activePlayer;
   const printNewRound = () => {
     board.printBoard();
     console.log(`${getActivePlayer().name}'s turn.`)
   };
 
-  // board.display(); //initial display
 
+  board.display()
+// Call it elsewhere in your code if needed:
   const playRound = (index) => {
     console.log(`Marking ${getActivePlayer().name}'s token into index: ${index}`);
     board.dropToken(index, getActivePlayer().token);
@@ -202,7 +334,7 @@ function GameController (
     getIndex()
     printNewRound();
 
-    function getIndex (){
+  function getIndex (){
       let boxes = document.querySelectorAll ('div[class^="boxes-"]');
 
         boxes.forEach((box) => {
@@ -267,7 +399,7 @@ function GameController (
   };
 };
 
-GameController()
+// GameController()
 
 
 //pick up assignment
